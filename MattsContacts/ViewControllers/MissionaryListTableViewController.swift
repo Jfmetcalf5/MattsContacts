@@ -52,7 +52,12 @@ class MissionaryListTableViewController: UITableViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == "toMissionaryDetail" {
+            guard let indexPath = tableView.indexPathForSelectedRow,
+            let detailVC = segue.destination as? MissionaryDetailViewController else { return }
+            let missionary = MissionaryController.shared.missionaries[indexPath.row]
+            detailVC.missionary = missionary
+        }
     }
 
 }

@@ -16,6 +16,7 @@
 		3B9D119520A0B39500B44CF7 /* Missionary+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9D119420A0B39500B44CF7 /* Missionary+Convenience.swift */; };
 		3B9D119720A0B5C100B44CF7 /* MissionaryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9D119620A0B5C100B44CF7 /* MissionaryController.swift */; };
 		3B9D119C20A0B83D00B44CF7 /* MissionaryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9D119B20A0B83D00B44CF7 /* MissionaryListTableViewController.swift */; };
+		3BB9BD3720A0BF0300DF36F5 /* MissionaryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB9BD3620A0BF0300DF36F5 /* MissionaryDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		3B9D119420A0B39500B44CF7 /* Missionary+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Missionary+Convenience.swift"; sourceTree = "<group>"; };
 		3B9D119620A0B5C100B44CF7 /* MissionaryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionaryController.swift; sourceTree = "<group>"; };
 		3B9D119B20A0B83D00B44CF7 /* MissionaryListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionaryListTableViewController.swift; sourceTree = "<group>"; };
+		3BB9BD3620A0BF0300DF36F5 /* MissionaryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionaryDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				3B9D119B20A0B83D00B44CF7 /* MissionaryListTableViewController.swift */,
+				3BB9BD3620A0BF0300DF36F5 /* MissionaryDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				3B9D119C20A0B83D00B44CF7 /* MissionaryListTableViewController.swift in Sources */,
 				3B9D118320A0ADA100B44CF7 /* MattsContacts.xcdatamodeld in Sources */,
 				3B9D117B20A0ADA100B44CF7 /* AppDelegate.swift in Sources */,
+				3BB9BD3720A0BF0300DF36F5 /* MissionaryDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
