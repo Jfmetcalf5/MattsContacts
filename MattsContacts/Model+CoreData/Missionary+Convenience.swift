@@ -1,0 +1,41 @@
+//
+//  Missionary+Convenience.swift
+//  MattsContacts
+//
+//  Created by Jacob Metcalf on 5/7/18.
+//  Copyright © 2018 JfMetcalf. All rights reserved.
+//
+
+import Foundation
+import CoreData
+
+extension Missionary {
+    convenience init(name: String, parents: String, address: String, city: String, state: String, zip: Int16, phone: String, parentsEmail: String, mission: String, mtcDate: String, mtc: String, suit: String, suitBrand: String, pantWaist: String, pantLength: String, bottom: String, shoes: String, shoeBrand: String,lsShirtsNeck: String, lsBrand: String, ssShirtsNeck: String, ssBrand: String, coat: String, coatBrand: String, birthday: Date, context: NSManagedObjectContext = CoreDataStack.context) {
+        self.init(context: context)
+        self.name = name
+        self.parents = parents
+        self.address = address
+        self.city = city
+        self.state = state
+        self.zip = zip
+        self.phone = phone
+        self.parentsEmail = parentsEmail
+        self.mission = mission
+        self.mtcDate = mtcDate
+        self.mtc = mtc
+        self.suit = suit
+        self.suitBrand = suitBrand
+        self.pantWaist = pantWaist
+        self.pantLength = pantLength
+        self.bottom = bottom
+        self.shoes = shoes
+        self.shoeBrand = shoeBrand
+        self.lsShirtsNeck = lsShirtsNeck
+        self.lsBrand = lsBrand
+        self.ssShirtsNeck = ssShirtsNeck
+        self.ssBrand = ssBrand
+        self.coat = coat
+        self.coatBrand = coatBrand
+        self.birthday = birthday
+    }
+}
