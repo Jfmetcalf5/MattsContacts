@@ -34,6 +34,8 @@ class MissionaryDetailViewController: UIViewController {
     @IBOutlet weak var frontLabel: UILabel!
     @IBOutlet weak var shoesLabel: UILabel!
     @IBOutlet weak var shoeBrandLabel: UILabel!
+    @IBOutlet weak var shoes2BrandLabel: UILabel!
+    @IBOutlet weak var shoes2Label: UILabel!
     @IBOutlet weak var lsLabel: UILabel!
     @IBOutlet weak var lsBrand: UILabel!
     @IBOutlet weak var sleeveLabel: UILabel!
@@ -112,6 +114,8 @@ class MissionaryDetailViewController: UIViewController {
         frontLabel.text = missionary.front
         shoesLabel.text = missionary.shoes
         shoeBrandLabel.text = missionary.shoeBrand
+        shoes2Label.text = missionary.shoes2
+        shoes2BrandLabel.text = missionary.shoes2Brand
         lsLabel.text = missionary.lsShirtsNeck
         lsBrand.text = missionary.lsBrand
         sleeveLabel.text = missionary.sleeve

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17E199" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17E202" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Missionary" representedClassName="Missionary" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="birthday" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -24,6 +24,8 @@
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="shoeBrand" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="shoes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shoes2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shoes2Brand" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sleeve" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ssBrand" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ssShirtsNeck" optional="YES" attributeType="String" syncable="YES"/>
@@ -33,6 +35,6 @@
         <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Missionary" positionX="-63" positionY="-18" width="128" height="495"/>
+        <element name="Missionary" positionX="-63" positionY="-18" width="128" height="525"/>
     </elements>
 </model>

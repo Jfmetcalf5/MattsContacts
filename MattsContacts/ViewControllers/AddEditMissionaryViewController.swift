@@ -32,6 +32,8 @@ class AddEditMissionaryViewController: ShiftableViewController {
     @IBOutlet weak var frontTextField: UITextField!
     @IBOutlet weak var shoesTextField: UITextField!
     @IBOutlet weak var shoeBrandTextField: UITextField!
+    @IBOutlet weak var shoes2TextField: UITextField!
+    @IBOutlet weak var shoes2BrandTextField: UITextField!
     @IBOutlet weak var lsTextField: UITextField!
     @IBOutlet weak var sleeveTextField: UITextField!
     @IBOutlet weak var lsBrandTextField: UITextField!
@@ -68,6 +70,8 @@ class AddEditMissionaryViewController: ShiftableViewController {
         frontTextField.delegate = self
         shoesTextField.delegate = self
         shoeBrandTextField.delegate = self
+        shoes2TextField.delegate = self
+        shoes2BrandTextField.delegate = self
         lsTextField.delegate = self
         sleeveTextField.delegate = self
         lsBrandTextField.delegate = self
@@ -108,6 +112,8 @@ class AddEditMissionaryViewController: ShiftableViewController {
         frontTextField.text = missionary.front
         shoesTextField.text = missionary.shoes
         shoeBrandTextField.text = missionary.shoeBrand
+        shoes2BrandTextField.text = missionary.shoes2
+        shoes2BrandTextField.text = missionary.shoes2Brand
         lsTextField.text = missionary.lsShirtsNeck
         lsBrandTextField.text = missionary.lsBrand
         sleeveTextField.text = missionary.sleeve
@@ -120,9 +126,9 @@ class AddEditMissionaryViewController: ShiftableViewController {
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "mm/dd/yyyy"
-       guard let name = nameTextField.text, name != "",
-        let birthdayString = birthdayTextField.text, birthdayString != "",
-        let birthday = dateFormatter.date(from: birthdayString) else { return }
+       guard let name = nameTextField.text, name != "" else { return }
+        let birthdayString = birthdayTextField.text
+        let birthday = dateFormatter.date(from: birthdayString ?? "")
         let parents = parentsTextField.text
         let address = addreddTextField.text
         let city = cityTextField.text
@@ -143,6 +149,8 @@ class AddEditMissionaryViewController: ShiftableViewController {
         let front = frontTextField.text
         let shoes = shoesTextField.text
         let shoeBrand = shoeBrandTextField.text
+        let shoes2 = shoes2TextField.text
+        let shoes2Brand = shoes2BrandTextField.text
         let lsShirtsNeck = lsTextField.text
         let lsBrand = lsBrandTextField.text
         let sleeve = sleeveTextField.text
@@ -152,9 +160,9 @@ class AddEditMissionaryViewController: ShiftableViewController {
         let coatBrand = coatBrandTextField.text
         
         if let missionary = missionary {
-            MissionaryController.shared.update(missionary: missionary, name: name, parents: parents ?? "", address: address ?? "", city: city ?? "", state: state ?? "", zip: zip ?? "", phone: phone ?? "", parentsEmail: parentsEmail ?? "", mission: mission ?? "", mtcDate: mtcDate ?? Date(), mtc: mtc ?? "", suit: suit ?? "", suitBrand: suitBrand ?? "", pantWaist: pantWaist ?? "", pantLength: pantLength ?? "", bottom: bottom ?? "", front: front ?? "", shoes: shoes ?? "", shoeBrand: shoeBrand ?? "", lsShirtsNeck: lsShirtsNeck ?? "", lsBrand: lsBrand ?? "", ssShirtsNeck: ssShirtsNeck ?? "", ssBrand: ssBrand ?? "", coat: coat ?? "", coatBrand: coatBrand ?? "", birthday: birthday, pant: pant ?? "", sleeve: sleeve ?? "")
+            MissionaryController.shared.update(missionary: missionary, name: name, parents: parents ?? "", address: address ?? "", city: city ?? "", state: state ?? "", zip: zip ?? "", phone: phone ?? "", parentsEmail: parentsEmail ?? "", mission: mission ?? "", mtcDate: mtcDate ?? Date(), mtc: mtc ?? "", suit: suit ?? "", suitBrand: suitBrand ?? "", pantWaist: pantWaist ?? "", pantLength: pantLength ?? "", bottom: bottom ?? "", front: front ?? "", shoes: shoes ?? "", shoeBrand: shoeBrand ?? "", shoes2: shoes2 ?? "", shoes2Brand: shoes2Brand ?? "", lsShirtsNeck: lsShirtsNeck ?? "", lsBrand: lsBrand ?? "", ssShirtsNeck: ssShirtsNeck ?? "", ssBrand: ssBrand ?? "", coat: coat ?? "", coatBrand: coatBrand ?? "", birthday: birthday ?? Date(), pant: pant ?? "", sleeve: sleeve ?? "")
         } else {
-            MissionaryController.shared.createMissioanry(name: name, parents: parents ?? "", address: address ?? "", city: city ?? "", state: state ?? "", zip: zip ?? "", phone: phone ?? "", parentsEmail: parentsEmail ?? "", mission: mission ?? "", mtcDate: mtcDate ?? Date(), mtc: mtc ?? "", suit: suit ?? "", suitBrand: suitBrand ?? "", pantWaist: pantWaist ?? "", pantLength: pantLength ?? "", bottom: bottom ?? "", front: front ?? "", shoes: shoes ?? "", shoeBrand: shoeBrand ?? "", lsShirtsNeck: lsShirtsNeck ?? "", lsBrand: lsBrand ?? "", ssShirtsNeck: ssShirtsNeck ?? "", ssBrand: ssBrand ?? "", coat: coat ?? "", coatBrand: coatBrand ?? "", birthday: birthday, pant: pant ?? "", sleeve: sleeve ?? "")
+            MissionaryController.shared.createMissioanry(name: name, parents: parents ?? "", address: address ?? "", city: city ?? "", state: state ?? "", zip: zip ?? "", phone: phone ?? "", parentsEmail: parentsEmail ?? "", mission: mission ?? "", mtcDate: mtcDate ?? Date(), mtc: mtc ?? "", suit: suit ?? "", suitBrand: suitBrand ?? "", pantWaist: pantWaist ?? "", pantLength: pantLength ?? "", bottom: bottom ?? "", front: front ?? "", shoes: shoes ?? "", shoeBrand: shoeBrand ?? "", shoes2: shoes2 ?? "", shoes2Brand: shoes2Brand ?? "", lsShirtsNeck: lsShirtsNeck ?? "", lsBrand: lsBrand ?? "", ssShirtsNeck: ssShirtsNeck ?? "", ssBrand: ssBrand ?? "", coat: coat ?? "", coatBrand: coatBrand ?? "", birthday: birthday ?? Date(), pant: pant ?? "", sleeve: sleeve ?? "")
         }
             navigationController?.popViewController(animated: true)
     }
