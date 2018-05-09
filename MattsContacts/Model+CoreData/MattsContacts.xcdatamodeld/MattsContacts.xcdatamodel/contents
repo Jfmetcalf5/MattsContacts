@@ -12,9 +12,11 @@
         <attribute name="lsShirtsNeck" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mission" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mtc" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="mtcDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mtcDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pant" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pantBrand" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pantLength" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pantWaist" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="parents" optional="YES" attributeType="String" syncable="YES"/>
@@ -22,14 +24,15 @@
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="shoeBrand" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="shoes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sleeve" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ssBrand" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ssShirtsNeck" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="suit" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="suitBrand" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="zip" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Missionary" positionX="-63" positionY="-18" width="128" height="450"/>
+        <element name="Missionary" positionX="-63" positionY="-18" width="128" height="495"/>
     </elements>
 </model>

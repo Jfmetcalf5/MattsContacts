@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 extension Missionary {
-    convenience init(name: String, parents: String, address: String, city: String, state: String, zip: Int16, phone: String, parentsEmail: String, mission: String, mtcDate: String, mtc: String, suit: String, suitBrand: String, pantWaist: String, pantLength: String, bottom: String, shoes: String, shoeBrand: String,lsShirtsNeck: String, lsBrand: String, ssShirtsNeck: String, ssBrand: String, coat: String, coatBrand: String, birthday: Date, context: NSManagedObjectContext = CoreDataStack.context) {
+    convenience init(name: String, parents: String, address: String, city: String, state: String, zip: String, phone: String, parentsEmail: String, mission: String, mtcDate: Date, mtc: String, suit: String, suitBrand: String, pantWaist: String, pantLength: String, bottom: String, front: String, shoes: String, shoeBrand: String,lsShirtsNeck: String, lsBrand: String, ssShirtsNeck: String, ssBrand: String, coat: String, coatBrand: String, birthday: Date, pant: String, sleeve: String, context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
         self.name = name
         self.parents = parents
@@ -28,6 +28,7 @@ extension Missionary {
         self.pantWaist = pantWaist
         self.pantLength = pantLength
         self.bottom = bottom
+        self.front = front
         self.shoes = shoes
         self.shoeBrand = shoeBrand
         self.lsShirtsNeck = lsShirtsNeck
@@ -37,5 +38,7 @@ extension Missionary {
         self.coat = coat
         self.coatBrand = coatBrand
         self.birthday = birthday
+        self.pant = pant
+        self.sleeve = sleeve
     }
 }
