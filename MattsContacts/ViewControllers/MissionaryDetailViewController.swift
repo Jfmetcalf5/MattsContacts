@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class MissionaryDetailViewController: UIViewController {
+class MissionaryDetailViewController: UIViewController, MFMessageComposeViewControllerDelegate {
     
     var missionary: Missionary?
     
@@ -58,23 +59,51 @@ class MissionaryDetailViewController: UIViewController {
     }
     
     @IBAction func phoneButtonTapped(_ sender: UIButton) {
-        guard let url = URL(string: "tel://\(phoneLabel.text ?? "")") else {
-            return }
-        UIApplication.shared.open(url, options: [:]) { (called) in
-            if called {
-                print("We somehow did it")
+        let alert = UIAlertController(title: "Text Message?", message: "", preferredStyle: .alert)
+        let textAction = UIAlertAction(title: "Yes", style: .default) { (text) in
+            if (MFMessageComposeViewController.canSendText()) {
+                let controller = MFMessageComposeViewController()
+                controller.body = ""
+                controller.recipients = [self.phoneLabel.text ?? ""]
+                controller.messageComposeDelegate = self
+                self.present(controller, animated: true, completion: nil)
             }
         }
+        let callAction = UIAlertAction(title: "No", style: .default) { (call) in
+            guard let url = URL(string: "tel://\(self.phoneLabel.text ?? "")") else {
+                return }
+            UIApplication.shared.open(url, options: [:]) { (called) in
+                
+            }
+        }
+        
+        alert.addAction(textAction)
+        alert.addAction(callAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func emailButtonTapped(_ sender: UIButton) {
-        guard let url = URL(string: "mailto:\(parentsEmailLabel.text ?? "")") else {
-            return }
-        UIApplication.shared.open(url, options: [:]) { (called) in
-            if called {
-                print("We somehow did it")
+        let alert = UIAlertController(title: "Send an Email?", message: "", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { (yes) in
+            guard let url = URL(string: "mailto:\(self.parentsEmailLabel.text ?? "")") else {
+                return }
+            UIApplication.shared.open(url, options: [:]) { (called) in
+                if called {
+                    print("We somehow did it")
+                }
             }
         }
+        let noAction = UIAlertAction(title: "Nope", style: .cancel, handler: nil)
+        
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
+        
+        present(alert, animated: true, completion: nil)
     }
     
     func setUpViews() {
