@@ -57,6 +57,26 @@ class MissionaryDetailViewController: UIViewController {
         print("I need to finish this!!!")
     }
     
+    @IBAction func phoneButtonTapped(_ sender: UIButton) {
+        guard let url = URL(string: "tel://\(phoneLabel.text ?? "")") else {
+            return }
+        UIApplication.shared.open(url, options: [:]) { (called) in
+            if called {
+                print("We somehow did it")
+            }
+        }
+    }
+    
+    @IBAction func emailButtonTapped(_ sender: UIButton) {
+        guard let url = URL(string: "mailto:\(parentsEmailLabel.text ?? "")") else {
+            return }
+        UIApplication.shared.open(url, options: [:]) { (called) in
+            if called {
+                print("We somehow did it")
+            }
+        }
+    }
+    
     func setUpViews() {
         
         let dateFormatter = DateFormatter()
@@ -64,33 +84,6 @@ class MissionaryDetailViewController: UIViewController {
         dateFormatter.dateFormat = "mm/dd/yy"
         
         guard let missionary = missionary else { return }
-
-//        if missionary.parents == "" { parentsLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.5) }
-//        if missionary.address == "" { addressLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.5) }
-//        if missionary.city == "" { cityLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.5) }
-//        if missionary.state == "" { stateLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.5) }
-//        if missionary.zip == "" { zipLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.5) }
-//        if missionary.phone == "" { phoneLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.5) }
-//        if missionary.parentsEmail == "" { parentsEmailLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.5) }
-//        if missionary.mission == "" { missionLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.5) }
-//        if missionary.mtc == "" { whichMtcLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.5) }
-//        if missionary.suit == "" { suitLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.5) }
-//        if missionary.suitBrand == "" { suitBrandLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.5) }
-//        if missionary.pant == "" { pantLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.5) }
-//        if missionary.pantWaist == "" { pantWaistLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.5) }
-//        if missionary.pantLength == "" { pantLengthLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.5) }
-//        if missionary.pantBrand == "" { pantBrandLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.5) }
-//        if missionary.bottom == "" { bottomLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.5) }
-//        if missionary.front == "" { frontLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.5) }
-//        if missionary.shoes == "" { shoesLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.5) }
-//        if missionary.shoeBrand == "" { shoeBrandLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.5) }
-//        if missionary.lsShirtsNeck == "" { lsLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.5) }
-//        if missionary.lsBrand == "" { lsBrand.backgroundColor = UIColor.gray.withAlphaComponent(0.5)  }
-//        if missionary.sleeve == "" { sleeveLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.5) }
-//        if missionary.ssShirtsNeck == "" { ssLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.5)  }
-//        if missionary.ssBrand == "" { ssBrand.backgroundColor = UIColor.gray.withAlphaComponent(0.5)  }
-//        if missionary.coat == "" { coatLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.5)  }
-//        if missionary.coatBrand == "" { coatBrandLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.5) }
 
         nameLabel.text = missionary.name
         birthdayLabel.text = dateFormatter.string(from: missionary.birthday ?? Date())

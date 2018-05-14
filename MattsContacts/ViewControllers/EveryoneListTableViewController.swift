@@ -1,17 +1,17 @@
 //
-//  MissionaryListTableViewController.swift
+//  EveryoneListTableViewController.swift
 //  MattsContacts
 //
-//  Created by Jacob Metcalf on 5/7/18.
+//  Created by Jacob Metcalf on 5/14/18.
 //  Copyright © 2018 JfMetcalf. All rights reserved.
 //
 
 import UIKit
 
-class MissionaryListTableViewController: UITableViewController {
+class EveryoneListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -22,15 +22,15 @@ class MissionaryListTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MissionaryController.shared.missionaries.count
+        return PersonController.shared.persons.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "missionaryCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "personCell", for: indexPath)
         
-        let missionary = MissionaryController.shared.missionaries[indexPath.row]
+        let person = PersonController.shared.persons[indexPath.row]
         
-        cell.textLabel?.text = missionary.name
+        cell.textLabel?.text = person.name
         
         return cell
     }
@@ -38,8 +38,11 @@ class MissionaryListTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let selectedMissionary = MissionaryController.shared.missionaries[indexPath.row]
-            MissionaryController.shared.delete(missionary: selectedMissionary)
+            
+            let selectedPerson = PersonController.shared.persons[indexPath.row]
+            
+            PersonController.shared.delete(person: selectedPerson)
+            
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -47,11 +50,11 @@ class MissionaryListTableViewController: UITableViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toMissionaryDetail" {
-            guard let indexPath = tableView.indexPathForSelectedRow,
-                let detailVC = segue.destination as? MissionaryDetailViewController else { return }
-            let missionary = MissionaryController.shared.missionaries[indexPath.row]
-            detailVC.missionary = missionary
+        if segue.identifier == "toPersonDetail" {
+            guard let detailVC = segue.destination as? EveryoneDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
+            let person = PersonController.shared.persons[indexPath.row]
+            detailVC.person = person
         }
     }
 }

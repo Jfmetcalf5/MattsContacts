@@ -55,6 +55,7 @@ class MissionaryController {
         missionary.birthday = birthday
         missionary.pant = pant
         missionary.sleeve = sleeve
+        saveToPersistentStore()
     }
     
     func delete(missionary: Missionary) {

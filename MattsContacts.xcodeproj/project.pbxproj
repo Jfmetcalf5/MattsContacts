@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		3B0B321020A0F9BD0033066F /* AddEditMissionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B320F20A0F9BD0033066F /* AddEditMissionaryViewController.swift */; };
 		3B0B321320A34CEE0033066F /* ShiftableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B321220A34CEE0033066F /* ShiftableViewController.swift */; };
+		3B3AE99220A9C881002E8D12 /* EveryoneListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3AE99120A9C881002E8D12 /* EveryoneListTableViewController.swift */; };
+		3B3AE99420A9CA81002E8D12 /* Person+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3AE99320A9CA81002E8D12 /* Person+Convenience.swift */; };
+		3B3AE99620A9CAFD002E8D12 /* PersonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3AE99520A9CAFD002E8D12 /* PersonController.swift */; };
+		3B3AE99A20A9CCB2002E8D12 /* AddEditEveryoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3AE99920A9CCB2002E8D12 /* AddEditEveryoneViewController.swift */; };
+		3B3AE99C20A9CCC1002E8D12 /* EveryoneDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3AE99B20A9CCC1002E8D12 /* EveryoneDetailViewController.swift */; };
 		3B9D117B20A0ADA100B44CF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9D117A20A0ADA100B44CF7 /* AppDelegate.swift */; };
 		3B9D118020A0ADA100B44CF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B9D117E20A0ADA100B44CF7 /* Main.storyboard */; };
 		3B9D118320A0ADA100B44CF7 /* MattsContacts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B9D118120A0ADA100B44CF7 /* MattsContacts.xcdatamodeld */; };
@@ -24,6 +29,11 @@
 /* Begin PBXFileReference section */
 		3B0B320F20A0F9BD0033066F /* AddEditMissionaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditMissionaryViewController.swift; sourceTree = "<group>"; };
 		3B0B321220A34CEE0033066F /* ShiftableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftableViewController.swift; sourceTree = "<group>"; };
+		3B3AE99120A9C881002E8D12 /* EveryoneListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EveryoneListTableViewController.swift; sourceTree = "<group>"; };
+		3B3AE99320A9CA81002E8D12 /* Person+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+Convenience.swift"; sourceTree = "<group>"; };
+		3B3AE99520A9CAFD002E8D12 /* PersonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonController.swift; sourceTree = "<group>"; };
+		3B3AE99920A9CCB2002E8D12 /* AddEditEveryoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditEveryoneViewController.swift; sourceTree = "<group>"; };
+		3B3AE99B20A9CCC1002E8D12 /* EveryoneDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EveryoneDetailViewController.swift; sourceTree = "<group>"; };
 		3B9D117720A0ADA100B44CF7 /* MattsContacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MattsContacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B9D117A20A0ADA100B44CF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B9D117F20A0ADA100B44CF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -103,6 +113,7 @@
 				3B9D118120A0ADA100B44CF7 /* MattsContacts.xcdatamodeld */,
 				3B9D119220A0B36600B44CF7 /* CoreDataStack.swift */,
 				3B9D119420A0B39500B44CF7 /* Missionary+Convenience.swift */,
+				3B3AE99320A9CA81002E8D12 /* Person+Convenience.swift */,
 			);
 			path = "Model+CoreData";
 			sourceTree = "<group>";
@@ -111,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				3B9D119620A0B5C100B44CF7 /* MissionaryController.swift */,
+				3B3AE99520A9CAFD002E8D12 /* PersonController.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -121,6 +133,9 @@
 				3B9D119B20A0B83D00B44CF7 /* MissionaryListTableViewController.swift */,
 				3BB9BD3620A0BF0300DF36F5 /* MissionaryDetailViewController.swift */,
 				3B0B320F20A0F9BD0033066F /* AddEditMissionaryViewController.swift */,
+				3B3AE99120A9C881002E8D12 /* EveryoneListTableViewController.swift */,
+				3B3AE99920A9CCB2002E8D12 /* AddEditEveryoneViewController.swift */,
+				3B3AE99B20A9CCC1002E8D12 /* EveryoneDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -207,12 +222,17 @@
 				3B9D119720A0B5C100B44CF7 /* MissionaryController.swift in Sources */,
 				3B9D119320A0B36600B44CF7 /* CoreDataStack.swift in Sources */,
 				3B9D119520A0B39500B44CF7 /* Missionary+Convenience.swift in Sources */,
+				3B3AE99A20A9CCB2002E8D12 /* AddEditEveryoneViewController.swift in Sources */,
 				3B9D119C20A0B83D00B44CF7 /* MissionaryListTableViewController.swift in Sources */,
+				3B3AE99620A9CAFD002E8D12 /* PersonController.swift in Sources */,
 				3B0B321020A0F9BD0033066F /* AddEditMissionaryViewController.swift in Sources */,
 				3B9D118320A0ADA100B44CF7 /* MattsContacts.xcdatamodeld in Sources */,
+				3B3AE99220A9C881002E8D12 /* EveryoneListTableViewController.swift in Sources */,
 				3B9D117B20A0ADA100B44CF7 /* AppDelegate.swift in Sources */,
+				3B3AE99C20A9CCC1002E8D12 /* EveryoneDetailViewController.swift in Sources */,
 				3B0B321320A34CEE0033066F /* ShiftableViewController.swift in Sources */,
 				3BB9BD3720A0BF0300DF36F5 /* MissionaryDetailViewController.swift in Sources */,
+				3B3AE99420A9CA81002E8D12 /* Person+Convenience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

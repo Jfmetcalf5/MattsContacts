@@ -43,7 +43,6 @@ class AddEditMissionaryViewController: ShiftableViewController {
     @IBOutlet weak var coatBrandTextField: UITextField!
     
     var missionary: Missionary?
-    var alreadyExists: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,7 +89,6 @@ class AddEditMissionaryViewController: ShiftableViewController {
         dateFormatter.dateStyle = .medium
         dateFormatter.dateFormat = "mm/dd/yyyy"
         guard let missionary = missionary else { return }
-        alreadyExists = true
         nameTextField.text = missionary.name
         birthdayTextField.text = dateFormatter.string(from: missionary.birthday ?? Date())
         parentsTextField.text = missionary.parents
