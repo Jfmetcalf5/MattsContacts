@@ -21,6 +21,7 @@ class EveryoneDetailViewController: UIViewController, MFMessageComposeViewContro
     @IBOutlet weak var zipLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var suitLabel: UILabel!
     @IBOutlet weak var suitBrandLabel: UILabel!
     @IBOutlet weak var pantWaistLabel: UILabel!
@@ -105,7 +106,6 @@ class EveryoneDetailViewController: UIViewController, MFMessageComposeViewContro
         dateFormatter.dateFormat = "mm/dd/yy"
         
         guard let person = person else { return }
-        
         nameLabel.text = person.name
         birthdayLabel.text = dateFormatter.string(from: person.birthday ?? Date())
         addressLabel.text = person.address
@@ -114,6 +114,7 @@ class EveryoneDetailViewController: UIViewController, MFMessageComposeViewContro
         zipLabel.text = person.zip
         phoneLabel.text = person.phone
         emailLabel.text = person.email
+        notesTextView.text = person.notes
         suitLabel.text = person.suit
         suitBrandLabel.text = person.suitBrand
         pantWaistLabel.text = person.pantWaist

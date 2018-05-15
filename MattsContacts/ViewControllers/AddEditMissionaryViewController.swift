@@ -22,6 +22,9 @@ class AddEditMissionaryViewController: ShiftableViewController {
     @IBOutlet weak var missionTextField: UITextField!
     @IBOutlet weak var enterMTCDateTextField: UITextField!
     @IBOutlet weak var whichMTCTextField: UITextField!
+    @IBOutlet weak var note1TextField: UITextField!
+    @IBOutlet weak var note2TextField: UITextField!
+    @IBOutlet weak var note3TextField: UITextField!
     @IBOutlet weak var suitTextField: UITextField!
     @IBOutlet weak var suitBrandTextField: UITextField!
     @IBOutlet weak var pantTextField: UITextField!
@@ -59,6 +62,9 @@ class AddEditMissionaryViewController: ShiftableViewController {
         missionTextField.delegate = self
         enterMTCDateTextField.delegate = self
         whichMTCTextField.delegate = self
+        note1TextField.delegate = self
+        note2TextField.delegate = self
+        note3TextField.delegate = self
         suitTextField.delegate = self
         suitBrandTextField.delegate = self
         pantTextField.delegate = self
@@ -89,6 +95,10 @@ class AddEditMissionaryViewController: ShiftableViewController {
         dateFormatter.dateStyle = .medium
         dateFormatter.dateFormat = "mm/dd/yyyy"
         guard let missionary = missionary else { return }
+        let notes = missionary.notes?.components(separatedBy: "\n")
+        let note1 = notes?.first
+        let note3 = notes?.last
+        let note2 = notes?[1]
         nameTextField.text = missionary.name
         birthdayTextField.text = dateFormatter.string(from: missionary.birthday ?? Date())
         parentsTextField.text = missionary.parents
@@ -101,6 +111,9 @@ class AddEditMissionaryViewController: ShiftableViewController {
         missionTextField.text = missionary.mission
         enterMTCDateTextField.text = dateFormatter.string(from: missionary.mtcDate ?? Date())
         whichMTCTextField.text = missionary.mtc
+        note1TextField.text = note1
+        note2TextField.text = note2
+        note3TextField.text = note3
         suitTextField.text = missionary.suit
         suitBrandTextField.text = missionary.suitBrand
         pantTextField.text = missionary.pant
@@ -125,6 +138,9 @@ class AddEditMissionaryViewController: ShiftableViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "mm/dd/yyyy"
        guard let name = nameTextField.text, name != "" else { return }
+        let note1 = note1TextField.text ?? ""
+        let note2 = note2TextField.text ?? ""
+        let note3 = note3TextField.text ?? ""
         let birthdayString = birthdayTextField.text
         let birthday = dateFormatter.date(from: birthdayString ?? "")
         let parents = parentsTextField.text
@@ -138,6 +154,7 @@ class AddEditMissionaryViewController: ShiftableViewController {
         let mtcDateString = enterMTCDateTextField.text
         let mtcDate = dateFormatter.date(from: mtcDateString ?? "")
         let mtc = whichMTCTextField.text
+        let notes = "\(note1)  \n\(note2)  \n\(note3)"
         let suit = suitTextField.text
         let suitBrand = suitBrandTextField.text
         let pant = pantTextField.text
@@ -158,9 +175,9 @@ class AddEditMissionaryViewController: ShiftableViewController {
         let coatBrand = coatBrandTextField.text
         
         if let missionary = missionary {
-            MissionaryController.shared.update(missionary: missionary, name: name, parents: parents ?? "", address: address ?? "", city: city ?? "", state: state ?? "", zip: zip ?? "", phone: phone ?? "", parentsEmail: parentsEmail ?? "", mission: mission ?? "", mtcDate: mtcDate ?? Date(), mtc: mtc ?? "", suit: suit ?? "", suitBrand: suitBrand ?? "", pantWaist: pantWaist ?? "", pantLength: pantLength ?? "", bottom: bottom ?? "", front: front ?? "", shoes: shoes ?? "", shoeBrand: shoeBrand ?? "", shoes2: shoes2 ?? "", shoes2Brand: shoes2Brand ?? "", lsShirtsNeck: lsShirtsNeck ?? "", lsBrand: lsBrand ?? "", ssShirtsNeck: ssShirtsNeck ?? "", ssBrand: ssBrand ?? "", coat: coat ?? "", coatBrand: coatBrand ?? "", birthday: birthday ?? Date(), pant: pant ?? "", sleeve: sleeve ?? "")
+            MissionaryController.shared.update(missionary: missionary, name: name, parents: parents ?? "", address: address ?? "", city: city ?? "", state: state ?? "", zip: zip ?? "", phone: phone ?? "", parentsEmail: parentsEmail ?? "", mission: mission ?? "", mtcDate: mtcDate ?? Date(), mtc: mtc ?? "", notes: notes, suit: suit ?? "", suitBrand: suitBrand ?? "", pantWaist: pantWaist ?? "", pantLength: pantLength ?? "", bottom: bottom ?? "", front: front ?? "", shoes: shoes ?? "", shoeBrand: shoeBrand ?? "", shoes2: shoes2 ?? "", shoes2Brand: shoes2Brand ?? "", lsShirtsNeck: lsShirtsNeck ?? "", lsBrand: lsBrand ?? "", ssShirtsNeck: ssShirtsNeck ?? "", ssBrand: ssBrand ?? "", coat: coat ?? "", coatBrand: coatBrand ?? "", birthday: birthday ?? Date(), pant: pant ?? "", sleeve: sleeve ?? "")
         } else {
-            MissionaryController.shared.createMissioanry(name: name, parents: parents ?? "", address: address ?? "", city: city ?? "", state: state ?? "", zip: zip ?? "", phone: phone ?? "", parentsEmail: parentsEmail ?? "", mission: mission ?? "", mtcDate: mtcDate ?? Date(), mtc: mtc ?? "", suit: suit ?? "", suitBrand: suitBrand ?? "", pantWaist: pantWaist ?? "", pantLength: pantLength ?? "", bottom: bottom ?? "", front: front ?? "", shoes: shoes ?? "", shoeBrand: shoeBrand ?? "", shoes2: shoes2 ?? "", shoes2Brand: shoes2Brand ?? "", lsShirtsNeck: lsShirtsNeck ?? "", lsBrand: lsBrand ?? "", ssShirtsNeck: ssShirtsNeck ?? "", ssBrand: ssBrand ?? "", coat: coat ?? "", coatBrand: coatBrand ?? "", birthday: birthday ?? Date(), pant: pant ?? "", sleeve: sleeve ?? "")
+            MissionaryController.shared.createMissioanry(name: name, parents: parents ?? "", address: address ?? "", city: city ?? "", state: state ?? "", zip: zip ?? "", phone: phone ?? "", parentsEmail: parentsEmail ?? "", mission: mission ?? "", mtcDate: mtcDate ?? Date(), mtc: mtc ?? "", notes: notes, suit: suit ?? "", suitBrand: suitBrand ?? "", pantWaist: pantWaist ?? "", pantLength: pantLength ?? "", bottom: bottom ?? "", front: front ?? "", shoes: shoes ?? "", shoeBrand: shoeBrand ?? "", shoes2: shoes2 ?? "", shoes2Brand: shoes2Brand ?? "", lsShirtsNeck: lsShirtsNeck ?? "", lsBrand: lsBrand ?? "", ssShirtsNeck: ssShirtsNeck ?? "", ssBrand: ssBrand ?? "", coat: coat ?? "", coatBrand: coatBrand ?? "", birthday: birthday ?? Date(), pant: pant ?? "", sleeve: sleeve ?? "")
         }
             navigationController?.popViewController(animated: true)
     }

@@ -20,6 +20,9 @@ class AddEditEveryoneViewController: ShiftableViewController {
     @IBOutlet weak var zipTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var note1TextField: UITextField!
+    @IBOutlet weak var note2TextField: UITextField!
+    @IBOutlet weak var note3TextField: UITextField!
     @IBOutlet weak var suitTextField: UITextField!
     @IBOutlet weak var suitBrandTextField: UITextField!
     @IBOutlet weak var pantWaistTextField: UITextField!
@@ -50,6 +53,9 @@ class AddEditEveryoneViewController: ShiftableViewController {
         zipTextField.delegate = self
         phoneTextField.delegate = self
         emailTextField.delegate = self
+        note1TextField.delegate = self
+        note2TextField.delegate = self
+        note1TextField.delegate = self
         suitTextField.delegate = self
         suitBrandTextField.delegate = self
         pantWaistTextField.delegate = self
@@ -77,6 +83,10 @@ class AddEditEveryoneViewController: ShiftableViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "mm/dd/yyyy"
         guard let person = person else { return }
+        let notes = person.notes?.components(separatedBy: "\n")
+        let note1 = notes?.first
+        let note3 = notes?.last
+        let note2 = notes?[1]
         nameTextField.text = person.name
         birthdayTextField.text = dateFormatter.string(from: person.birthday ?? Date())
         addressTextField.text = person.address
@@ -85,6 +95,9 @@ class AddEditEveryoneViewController: ShiftableViewController {
         zipTextField.text = person.zip
         phoneTextField.text = person.phone
         emailTextField.text = person.email
+        note1TextField.text = note1
+        note2TextField.text = note2
+        note3TextField.text = note3
         suitTextField.text = person.suit
         suitBrandTextField.text = person.suitBrand
         pantWaistTextField.text = person.pantWaist
@@ -108,6 +121,9 @@ class AddEditEveryoneViewController: ShiftableViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "mm/dd/yyyy"
         guard let name = nameTextField.text, name != "" else { return }
+        let note1 = note1TextField.text ?? ""
+        let note2 = note2TextField.text ?? ""
+        let note3 = note3TextField.text ?? ""
         let birthdayString = birthdayTextField.text
         let birthday = dateFormatter.date(from: birthdayString ?? "")
         let address = addressTextField.text
@@ -116,6 +132,7 @@ class AddEditEveryoneViewController: ShiftableViewController {
         let zip = zipTextField.text
         let phone = phoneTextField.text
         let email = emailTextField.text
+        let notes = "\(note1)  \n\(note2)  \n\(note3)"
         let suit = suitTextField.text
         let suitBrand = suitBrandTextField.text
         let pantWaist = pantWaistTextField.text
@@ -135,9 +152,9 @@ class AddEditEveryoneViewController: ShiftableViewController {
         let coatBrand = coatBrandTextField.text
         
         if let person = person {
-            PersonController.shared.update(person: person, name: name, address: address ?? "", city: city ?? "", state: state ?? "", zip: zip ?? "", phone: phone ?? "", email: email ?? "", suit: suit ?? "", suitBrand: suitBrand ?? "", pantWaist: pantWaist ?? "", pantLength: pantLength ?? "", bottom: bottom ?? "", front: front ?? "", shoes: shoes ?? "", shoeBrand: shoeBrand ?? "", shoes2: shoes2 ?? "", shoes2Brand: shoes2Brand ?? "", lsShirtsNeck: lsShirtsNeck ?? "", lsBrand: lsBrand ?? "", ssShirtsNeck: ssShirtsNeck ?? "", ssBrand: ssBrand ?? "", coat: coat ?? "", coatBrand: coatBrand ?? "", birthday: birthday ?? Date(), sleeve: sleeve ?? "")
+            PersonController.shared.update(person: person, name: name, address: address ?? "", city: city ?? "", state: state ?? "", zip: zip ?? "", phone: phone ?? "", email: email ?? "", notes: notes, suit: suit ?? "", suitBrand: suitBrand ?? "", pantWaist: pantWaist ?? "", pantLength: pantLength ?? "", bottom: bottom ?? "", front: front ?? "", shoes: shoes ?? "", shoeBrand: shoeBrand ?? "", shoes2: shoes2 ?? "", shoes2Brand: shoes2Brand ?? "", lsShirtsNeck: lsShirtsNeck ?? "", lsBrand: lsBrand ?? "", ssShirtsNeck: ssShirtsNeck ?? "", ssBrand: ssBrand ?? "", coat: coat ?? "", coatBrand: coatBrand ?? "", birthday: birthday ?? Date(), sleeve: sleeve ?? "")
         } else {
-            PersonController.shared.createPerson(name: name, address: address ?? "", city: city ?? "", state: state ?? "", zip: zip ?? "", phone: phone ?? "", email: email ?? "", suit: suit ?? "", suitBrand: suitBrand ?? "", pantWaist: pantWaist ?? "", pantLength: pantLength ?? "", bottom: bottom ?? "", front: front ?? "", shoes: shoes ?? "", shoeBrand: shoeBrand ?? "", shoes2: shoes2 ?? "", shoes2Brand: shoes2Brand ?? "", lsShirtsNeck: lsShirtsNeck ?? "", lsBrand: lsBrand ?? "", ssShirtsNeck: ssShirtsNeck ?? "", ssBrand: ssBrand ?? "", coat: coat ?? "", coatBrand: coatBrand ?? "", birthday: birthday ?? Date(), sleeve: sleeve ?? "")
+            PersonController.shared.createPerson(name: name, address: address ?? "", city: city ?? "", state: state ?? "", zip: zip ?? "", phone: phone ?? "", email: email ?? "", notes: notes, suit: suit ?? "", suitBrand: suitBrand ?? "", pantWaist: pantWaist ?? "", pantLength: pantLength ?? "", bottom: bottom ?? "", front: front ?? "", shoes: shoes ?? "", shoeBrand: shoeBrand ?? "", shoes2: shoes2 ?? "", shoes2Brand: shoes2Brand ?? "", lsShirtsNeck: lsShirtsNeck ?? "", lsBrand: lsBrand ?? "", ssShirtsNeck: ssShirtsNeck ?? "", ssBrand: ssBrand ?? "", coat: coat ?? "", coatBrand: coatBrand ?? "", birthday: birthday ?? Date(), sleeve: sleeve ?? "")
         }
         
         navigationController?.popViewController(animated: true)

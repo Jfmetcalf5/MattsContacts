@@ -25,6 +25,7 @@ class MissionaryDetailViewController: UIViewController, MFMessageComposeViewCont
     @IBOutlet weak var missionLabel: UILabel!
     @IBOutlet weak var enterMtcDateLabel: UILabel!
     @IBOutlet weak var whichMtcLabel: UILabel!
+    @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var suitLabel: UILabel!
     @IBOutlet weak var suitBrandLabel: UILabel!
     @IBOutlet weak var pantLabel: UILabel!
@@ -123,6 +124,7 @@ class MissionaryDetailViewController: UIViewController, MFMessageComposeViewCont
         zipLabel.text = missionary.zip
         phoneLabel.text = missionary.phone
         parentsEmailLabel.text = missionary.parentsEmail
+        notesTextView.text = missionary.notes
         missionLabel.text = missionary.mission
         enterMtcDateLabel.text = dateFormatter.string(from: missionary.mtcDate ?? Date())
         whichMtcLabel.text = missionary.mtc
@@ -145,7 +147,6 @@ class MissionaryDetailViewController: UIViewController, MFMessageComposeViewCont
         ssBrand.text = missionary.ssBrand
         coatLabel.text = missionary.coat
         coatBrandLabel.text = missionary.coatBrand
-        
     }
     
     // MARK: - Navigation
