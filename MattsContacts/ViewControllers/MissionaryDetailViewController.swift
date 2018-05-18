@@ -111,11 +111,16 @@ class MissionaryDetailViewController: UIViewController, MFMessageComposeViewCont
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
-        dateFormatter.dateFormat = "mm/dd/yy"
+        dateFormatter.dateFormat = "mm/dd/yyyy"
         
         guard let missionary = missionary else { return }
-
-        nameLabel.text = missionary.name
+        if let name = missionary.name, let lastName = missionary.lastName {
+            if name == lastName {
+                nameLabel.text = name
+            } else {
+                nameLabel.text = "\(name) \(lastName)"
+            }
+        }
         birthdayLabel.text = dateFormatter.string(from: missionary.birthday ?? Date())
         parentsLabel.text = missionary.parents
         addressLabel.text = missionary.address

@@ -18,14 +18,15 @@ class PersonController {
         return (try? CoreDataStack.context.fetch(request)) ?? []
     }
     
-    func createPerson(name: String, address: String, city: String, state: String, zip: String, phone: String, email: String, notes: String, suit: String, suitBrand: String, pantWaist: String, pantLength: String, bottom: String, front: String, shoes: String, shoeBrand: String, shoes2: String, shoes2Brand: String, lsShirtsNeck: String, lsBrand: String, ssShirtsNeck: String, ssBrand: String, coat: String, coatBrand: String, birthday: Date, sleeve: String) {
+    func createPerson(name: String, lastName: String, address: String, city: String, state: String, zip: String, phone: String, email: String, notes: String, suit: String, suitBrand: String, pantWaist: String, pantLength: String, bottom: String, front: String, shoes: String, shoeBrand: String, shoes2: String, shoes2Brand: String, lsShirtsNeck: String, lsBrand: String, ssShirtsNeck: String, ssBrand: String, coat: String, coatBrand: String, birthday: Date, sleeve: String) {
         
-        let _ = Person(name: name, address: address, city: city, state: state, zip: zip, phone: phone, email: email, notes: notes, suit: suit, suitBrand: suitBrand, pantWaist: pantWaist, pantLength: pantLength, bottom: bottom, front: front, shoes: shoes, shoeBrand: shoeBrand, shoes2: shoes2, shoes2Brand: shoes2Brand, lsShirtNeck: lsShirtsNeck, lsBrand: lsBrand, ssShirtsNeck: ssShirtsNeck, ssBrand: ssBrand, coat: coat, coatBrand: coatBrand, birthday: birthday, sleeve: sleeve)
+        let _ = Person(name: name, lastName: lastName, address: address, city: city, state: state, zip: zip, phone: phone, email: email, notes: notes, suit: suit, suitBrand: suitBrand, pantWaist: pantWaist, pantLength: pantLength, bottom: bottom, front: front, shoes: shoes, shoeBrand: shoeBrand, shoes2: shoes2, shoes2Brand: shoes2Brand, lsShirtNeck: lsShirtsNeck, lsBrand: lsBrand, ssShirtsNeck: ssShirtsNeck, ssBrand: ssBrand, coat: coat, coatBrand: coatBrand, birthday: birthday, sleeve: sleeve)
         saveToPersistentStore()
     }
     
-    func update(person: Person, name: String, address: String, city: String, state: String, zip: String, phone: String, email: String, notes: String, suit: String, suitBrand: String, pantWaist: String, pantLength: String, bottom: String, front: String, shoes: String, shoeBrand: String, shoes2: String, shoes2Brand: String, lsShirtsNeck: String, lsBrand: String, ssShirtsNeck: String, ssBrand: String, coat: String, coatBrand: String, birthday: Date, sleeve: String) {
+    func update(person: Person, name: String, lastName: String, address: String, city: String, state: String, zip: String, phone: String, email: String, notes: String, suit: String, suitBrand: String, pantWaist: String, pantLength: String, bottom: String, front: String, shoes: String, shoeBrand: String, shoes2: String, shoes2Brand: String, lsShirtsNeck: String, lsBrand: String, ssShirtsNeck: String, ssBrand: String, coat: String, coatBrand: String, birthday: Date, sleeve: String) {
         person.name = name
+        person.lastName = lastName
         person.address = address
         person.city = city
         person.state = state

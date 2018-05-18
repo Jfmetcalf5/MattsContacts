@@ -103,10 +103,16 @@ class EveryoneDetailViewController: UIViewController, MFMessageComposeViewContro
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
-        dateFormatter.dateFormat = "mm/dd/yy"
+        dateFormatter.dateFormat = "mm/dd/yyyy"
         
         guard let person = person else { return }
-        nameLabel.text = person.name
+        if let name = person.name, let lastName = person.lastName {
+            if name == lastName {
+                nameLabel.text = name
+            } else {
+                nameLabel.text = "\(name) \(lastName)"
+            }
+        }
         birthdayLabel.text = dateFormatter.string(from: person.birthday ?? Date())
         addressLabel.text = person.address
         cityLabel.text = person.city

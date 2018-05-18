@@ -19,18 +19,30 @@ class EveryoneListTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    func sortPeople() -> [Person] {
+        let persons = PersonController.shared.persons
+        let sortedPersons = persons.sorted(by: {$0.lastName ?? "" < $1.lastName ?? ""})
+        return sortedPersons
+    }
+    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PersonController.shared.persons.count
+        return sortPeople().count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "personCell", for: indexPath)
         
-        let person = PersonController.shared.persons[indexPath.row]
+        let person = sortPeople()[indexPath.row]
         
-        cell.textLabel?.text = person.name
+        if let first = person.name, let last = person.lastName {
+            if first == last {
+                cell.textLabel?.text = first
+            } else {
+                cell.textLabel?.text = "\(first) \(last)"
+            }
+        }
         
         return cell
     }
@@ -39,7 +51,7 @@ class EveryoneListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            let selectedPerson = PersonController.shared.persons[indexPath.row]
+            let selectedPerson = sortPeople()[indexPath.row]
             
             PersonController.shared.delete(person: selectedPerson)
             
@@ -53,7 +65,7 @@ class EveryoneListTableViewController: UITableViewController {
         if segue.identifier == "toPersonDetail" {
             guard let detailVC = segue.destination as? EveryoneDetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow else { return }
-            let person = PersonController.shared.persons[indexPath.row]
+            let person = sortPeople()[indexPath.row]
             detailVC.person = person
         }
     }

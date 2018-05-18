@@ -9,9 +9,10 @@
 import UIKit
 
 class AddEditEveryoneViewController: ShiftableViewController {
-
+    
     var person: Person?
     
+    @IBOutlet var pickerView: UIDatePicker!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var birthdayTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
@@ -47,6 +48,7 @@ class AddEditEveryoneViewController: ShiftableViewController {
         super.viewDidLoad()
         nameTextField.delegate = self
         birthdayTextField.delegate = self
+        birthdayTextField.inputView = pickerView
         addressTextField.delegate = self
         cityTextField.delegate = self
         stateTextField.delegate = self
@@ -87,7 +89,11 @@ class AddEditEveryoneViewController: ShiftableViewController {
         let note1 = notes?.first
         let note3 = notes?.last
         let note2 = notes?[1]
-        nameTextField.text = person.name
+        if let name = person.name, let lastName = person.lastName {
+            nameTextField.text = "\(name) \(lastName)"
+        } else if let name = person.name, person.lastName == "" {
+            nameTextField.text = name
+        }
         birthdayTextField.text = dateFormatter.string(from: person.birthday ?? Date())
         addressTextField.text = person.address
         cityTextField.text = person.city
@@ -118,46 +124,56 @@ class AddEditEveryoneViewController: ShiftableViewController {
     }
     
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "mm/dd/yyyy"
-        guard let name = nameTextField.text, name != "" else { return }
-        let note1 = note1TextField.text ?? ""
-        let note2 = note2TextField.text ?? ""
-        let note3 = note3TextField.text ?? ""
-        let birthdayString = birthdayTextField.text
-        let birthday = dateFormatter.date(from: birthdayString ?? "")
-        let address = addressTextField.text
-        let city = cityTextField.text
-        let state = stateTextField.text
-        let zip = zipTextField.text
-        let phone = phoneTextField.text
-        let email = emailTextField.text
-        let notes = "\(note1)  \n\(note2)  \n\(note3)"
-        let suit = suitTextField.text
-        let suitBrand = suitBrandTextField.text
-        let pantWaist = pantWaistTextField.text
-        let pantLength = pantLengthTextField.text
-        let bottom = bottomTextField.text
-        let front = frontTextField.text
-        let shoes = shoesTextField.text
-        let shoeBrand = shoeBrandTextField.text
-        let shoes2 = shoes2TextField.text
-        let shoes2Brand = shoes2BrandTextField.text
-        let lsShirtsNeck = lsShirtsNeckTextField.text
-        let lsBrand = shirtBrandTextField.text
-        let sleeve = sleeveTextField.text
-        let ssShirtsNeck = ssShirtsNeckTextField.text
-        let ssBrand = ssBrandTextField.text
-        let coat = coatTextField.text
-        let coatBrand = coatBrandTextField.text
-        
-        if let person = person {
-            PersonController.shared.update(person: person, name: name, address: address ?? "", city: city ?? "", state: state ?? "", zip: zip ?? "", phone: phone ?? "", email: email ?? "", notes: notes, suit: suit ?? "", suitBrand: suitBrand ?? "", pantWaist: pantWaist ?? "", pantLength: pantLength ?? "", bottom: bottom ?? "", front: front ?? "", shoes: shoes ?? "", shoeBrand: shoeBrand ?? "", shoes2: shoes2 ?? "", shoes2Brand: shoes2Brand ?? "", lsShirtsNeck: lsShirtsNeck ?? "", lsBrand: lsBrand ?? "", ssShirtsNeck: ssShirtsNeck ?? "", ssBrand: ssBrand ?? "", coat: coat ?? "", coatBrand: coatBrand ?? "", birthday: birthday ?? Date(), sleeve: sleeve ?? "")
+        if birthdayTextField.isEditing {
+            let saveDateFormetter = DateFormatter()
+            saveDateFormetter.dateStyle = .short
+            let date = saveDateFormetter.string(from: pickerView.date)
+            birthdayTextField.text = date
         } else {
-            PersonController.shared.createPerson(name: name, address: address ?? "", city: city ?? "", state: state ?? "", zip: zip ?? "", phone: phone ?? "", email: email ?? "", notes: notes, suit: suit ?? "", suitBrand: suitBrand ?? "", pantWaist: pantWaist ?? "", pantLength: pantLength ?? "", bottom: bottom ?? "", front: front ?? "", shoes: shoes ?? "", shoeBrand: shoeBrand ?? "", shoes2: shoes2 ?? "", shoes2Brand: shoes2Brand ?? "", lsShirtsNeck: lsShirtsNeck ?? "", lsBrand: lsBrand ?? "", ssShirtsNeck: ssShirtsNeck ?? "", ssBrand: ssBrand ?? "", coat: coat ?? "", coatBrand: coatBrand ?? "", birthday: birthday ?? Date(), sleeve: sleeve ?? "")
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "mm/dd/yy"
+            guard let wholeName = nameTextField.text, wholeName != "" else { return }
+            let firstAndLast = wholeName.components(separatedBy: " ")
+            let name = firstAndLast.first ?? ""
+            let lastName = firstAndLast.last ?? ""
+            let note1 = note1TextField.text ?? ""
+            let note2 = note2TextField.text ?? ""
+            let note3 = note3TextField.text ?? ""
+            let birthdayString = birthdayTextField.text
+            let birthday = dateFormatter.date(from: birthdayString ?? "")
+            let address = addressTextField.text
+            let city = cityTextField.text
+            let state = stateTextField.text
+            let zip = zipTextField.text
+            let phone = phoneTextField.text
+            let email = emailTextField.text
+            let notes = "\(note1)  \n\(note2)  \n\(note3)"
+            let suit = suitTextField.text
+            let suitBrand = suitBrandTextField.text
+            let pantWaist = pantWaistTextField.text
+            let pantLength = pantLengthTextField.text
+            let bottom = bottomTextField.text
+            let front = frontTextField.text
+            let shoes = shoesTextField.text
+            let shoeBrand = shoeBrandTextField.text
+            let shoes2 = shoes2TextField.text
+            let shoes2Brand = shoes2BrandTextField.text
+            let lsShirtsNeck = lsShirtsNeckTextField.text
+            let lsBrand = shirtBrandTextField.text
+            let sleeve = sleeveTextField.text
+            let ssShirtsNeck = ssShirtsNeckTextField.text
+            let ssBrand = ssBrandTextField.text
+            let coat = coatTextField.text
+            let coatBrand = coatBrandTextField.text
+            
+            if let person = person {
+                PersonController.shared.update(person: person, name: name, lastName: lastName, address: address ?? "", city: city ?? "", state: state ?? "", zip: zip ?? "", phone: phone ?? "", email: email ?? "", notes: notes, suit: suit ?? "", suitBrand: suitBrand ?? "", pantWaist: pantWaist ?? "", pantLength: pantLength ?? "", bottom: bottom ?? "", front: front ?? "", shoes: shoes ?? "", shoeBrand: shoeBrand ?? "", shoes2: shoes2 ?? "", shoes2Brand: shoes2Brand ?? "", lsShirtsNeck: lsShirtsNeck ?? "", lsBrand: lsBrand ?? "", ssShirtsNeck: ssShirtsNeck ?? "", ssBrand: ssBrand ?? "", coat: coat ?? "", coatBrand: coatBrand ?? "", birthday: birthday ?? Date(), sleeve: sleeve ?? "")
+            } else {
+                PersonController.shared.createPerson(name: name, lastName: lastName, address: address ?? "", city: city ?? "", state: state ?? "", zip: zip ?? "", phone: phone ?? "", email: email ?? "", notes: notes, suit: suit ?? "", suitBrand: suitBrand ?? "", pantWaist: pantWaist ?? "", pantLength: pantLength ?? "", bottom: bottom ?? "", front: front ?? "", shoes: shoes ?? "", shoeBrand: shoeBrand ?? "", shoes2: shoes2 ?? "", shoes2Brand: shoes2Brand ?? "", lsShirtsNeck: lsShirtsNeck ?? "", lsBrand: lsBrand ?? "", ssShirtsNeck: ssShirtsNeck ?? "", ssBrand: ssBrand ?? "", coat: coat ?? "", coatBrand: coatBrand ?? "", birthday: birthday ?? Date(), sleeve: sleeve ?? "")
+            }
+            navigationController?.popViewController(animated: true)
         }
-        
-        navigationController?.popViewController(animated: true)
+        view.endEditing(true)
     }
     
 }

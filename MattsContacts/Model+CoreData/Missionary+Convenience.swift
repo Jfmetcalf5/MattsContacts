@@ -10,9 +10,10 @@ import Foundation
 import CoreData
 
 extension Missionary {
-    convenience init(name: String, parents: String, address: String, city: String, state: String, zip: String, phone: String, parentsEmail: String, mission: String, mtcDate: Date, mtc: String, notes: String, suit: String, suitBrand: String, pantWaist: String, pantLength: String, bottom: String, front: String, shoes: String, shoeBrand: String, shoes2: String, shoes2Brand: String, lsShirtsNeck: String, lsBrand: String, ssShirtsNeck: String, ssBrand: String, coat: String, coatBrand: String, birthday: Date, pant: String, sleeve: String, context: NSManagedObjectContext = CoreDataStack.context) {
+    convenience init(name: String, lastName: String, parents: String, address: String, city: String, state: String, zip: String, phone: String, parentsEmail: String, mission: String, mtcDate: Date, mtc: String, notes: String, suit: String, suitBrand: String, pantWaist: String, pantLength: String, bottom: String, front: String, shoes: String, shoeBrand: String, shoes2: String, shoes2Brand: String, lsShirtsNeck: String, lsBrand: String, ssShirtsNeck: String, ssBrand: String, coat: String, coatBrand: String, birthday: Date, pant: String, sleeve: String, context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
         self.name = name
+        self.lastName = lastName
         self.parents = parents
         self.address = address
         self.city = city
