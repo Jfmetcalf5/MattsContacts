@@ -102,9 +102,11 @@ class AddEditMissionaryViewController: ShiftableViewController, UIPickerViewDele
         let note3 = notes?.last
         let note2 = notes?[1]
         if let name = missionary.name, let lastName = missionary.lastName {
-            nameTextField.text = "\(name) \(lastName)"
-        } else if let name = missionary.name, missionary.lastName == "" {
-            nameTextField.text = name
+            if name == lastName {
+                nameTextField.text = name
+            } else {
+                nameTextField.text = "\(name) \(lastName)"
+            }
         }
         birthdayTextField.text = dateFormatter.string(from: missionary.birthday ?? Date())
         parentsTextField.text = missionary.parents

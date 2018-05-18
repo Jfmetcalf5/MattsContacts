@@ -90,9 +90,11 @@ class AddEditEveryoneViewController: ShiftableViewController {
         let note3 = notes?.last
         let note2 = notes?[1]
         if let name = person.name, let lastName = person.lastName {
-            nameTextField.text = "\(name) \(lastName)"
-        } else if let name = person.name, person.lastName == "" {
-            nameTextField.text = name
+            if name == lastName {
+                nameTextField.text = name
+            } else {
+                nameTextField.text = "\(name) \(lastName)"
+            }
         }
         birthdayTextField.text = dateFormatter.string(from: person.birthday ?? Date())
         addressTextField.text = person.address
