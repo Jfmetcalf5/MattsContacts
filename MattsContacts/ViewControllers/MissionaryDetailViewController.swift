@@ -111,7 +111,7 @@ class MissionaryDetailViewController: UIViewController, MFMessageComposeViewCont
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
-        dateFormatter.dateFormat = "dd/mm/yy"
+        dateFormatter.dateFormat = "mm/dd/yy"
         
         guard let missionary = missionary else { return }
         if let name = missionary.name, let lastName = missionary.lastName {

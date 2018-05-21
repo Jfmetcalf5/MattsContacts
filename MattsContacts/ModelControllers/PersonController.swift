@@ -60,7 +60,10 @@ class PersonController {
     
     func fetchPersonsWith(searchTerm: String) {
         fetchPersons()
-        let searchedPersons = PersonController.shared.persons.filter{"\($0.name?.lowercased() ?? "") \($0.lastName?.lowercased() ?? "")".contains(searchTerm.lowercased()) || ("\($0.birthday?.month ?? 0)".contains(searchTerm.lowercased()))}
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.dateFormat = "mm/dd/yy"
+        let searchedPersons = PersonController.shared.persons.filter{"\($0.name?.lowercased() ?? "") \($0.lastName?.lowercased() ?? "")".contains(searchTerm.lowercased()) || ("\(dateFormatter.string(from: $0.birthday ?? Date()).dropLast().dropLast().dropLast().dropLast().dropLast().dropLast())".contains(searchTerm.lowercased()))}
         self.persons = searchedPersons
     }
     

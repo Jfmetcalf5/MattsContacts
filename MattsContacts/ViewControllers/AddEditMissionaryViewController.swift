@@ -91,15 +91,15 @@ class AddEditMissionaryViewController: ShiftableViewController, UIPickerViewDele
         coatTextField.delegate = self
         coatBrandTextField.delegate = self
         
-        birthdayTextField.placeholder = "mm/dd/yyyy"
-        enterMTCDateTextField.placeholder = "mm/dd/yyyy"
+        birthdayTextField.placeholder = "mm/dd/yy"
+        enterMTCDateTextField.placeholder = "mm/dd/yy"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
-        dateFormatter.dateFormat = "dd/mm/yy"
+        dateFormatter.dateFormat = "mm/dd/yy"
         guard let missionary = missionary else { return }
         let notes = missionary.notes?.components(separatedBy: "\n")
         let note1 = notes?.first
@@ -114,6 +114,7 @@ class AddEditMissionaryViewController: ShiftableViewController, UIPickerViewDele
         }
         if let birthday = missionary.birthday {
             birthdayTextField.text = dateFormatter.string(from: birthday)
+            pickerView.setDate(birthday, animated: true)
         } else {
             birthdayTextField.text = ""
         }
@@ -154,34 +155,9 @@ class AddEditMissionaryViewController: ShiftableViewController, UIPickerViewDele
         coatBrandTextField.text = missionary.coatBrand
     }
     
-//    func createToolBar() {
-//        let toolBar = UIToolbar()
-//        toolBar.sizeToFit()
-//
-//        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
-//
-//        toolBar.setItems([doneButton], animated: true)
-//        birthdayTextField.inputAccessoryView = toolBar
-//        enterMTCDateTextField.inputAccessoryView = toolBar
-//    }
-//
-//    @objc func donePressed() {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "dd/mm/yy"
-//        dateFormatter.dateStyle = .short
-//
-//        if birthdayTextField.isEditing {
-//            birthdayTextField.text = dateFormatter.string(from: pickerView.date)
-//        }
-//        if enterMTCDateTextField.isEditing {
-//            enterMTCDateTextField.text = dateFormatter.string(from: pickerView.date)
-//        }
-//        view.endEditing(true)
-//    }
-    
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/mm/yy"
+        dateFormatter.dateFormat = "mm/dd/yy"
         guard let wholeName = nameTextField.text, wholeName != "" else { return }
         let firstAndLast = wholeName.components(separatedBy: " ")
         let name = firstAndLast.first ?? ""
@@ -235,7 +211,7 @@ class AddEditMissionaryViewController: ShiftableViewController, UIPickerViewDele
     
     @objc func dateChanged(datePicker: UIDatePicker) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/mm/yy"
+        dateFormatter.dateFormat = "mm/dd/yy"
         dateFormatter.dateStyle = .short
         if birthdayTextField.isEditing {
             birthdayTextField.text = dateFormatter.string(from: pickerView.date)

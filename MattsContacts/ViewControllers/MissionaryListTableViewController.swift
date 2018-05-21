@@ -33,7 +33,6 @@ class MissionaryListTableViewController: UITableViewController, UISearchBarDeleg
         searchBar.resignFirstResponder()
     }
     
-    
     @IBAction func searchButtonTapped(_ sender: UIBarButtonItem) {
         searchBar.isHidden = false
         navigationController?.navigationBar.addSubview(searchBar)
@@ -58,6 +57,7 @@ class MissionaryListTableViewController: UITableViewController, UISearchBarDeleg
             MissionaryController.shared.fetchMissionaries()
             tableView.reloadData()
         }
+        
         if MissionaryController.shared.missionaries.count == 0 {
             MissionaryController.shared.fetchMissionaries()
             searchBar.text = ""
