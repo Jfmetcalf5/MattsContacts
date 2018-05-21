@@ -110,8 +110,8 @@ class MissionaryDetailViewController: UIViewController, MFMessageComposeViewCont
     func setUpViews() {
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.dateFormat = "mm/dd/yyyy"
+        dateFormatter.dateStyle = .short
+        dateFormatter.dateFormat = "dd/mm/yy"
         
         guard let missionary = missionary else { return }
         if let name = missionary.name, let lastName = missionary.lastName {
@@ -121,7 +121,11 @@ class MissionaryDetailViewController: UIViewController, MFMessageComposeViewCont
                 nameLabel.text = "\(name) \(lastName)"
             }
         }
-        birthdayLabel.text = dateFormatter.string(from: missionary.birthday ?? Date())
+        if let birthday = missionary.birthday {
+        birthdayLabel.text = dateFormatter.string(from: birthday)
+        } else {
+            birthdayLabel.text = ""
+        }
         parentsLabel.text = missionary.parents
         addressLabel.text = missionary.address
         cityLabel.text = missionary.city
@@ -131,7 +135,11 @@ class MissionaryDetailViewController: UIViewController, MFMessageComposeViewCont
         parentsEmailLabel.text = missionary.parentsEmail
         notesTextView.text = missionary.notes
         missionLabel.text = missionary.mission
-        enterMtcDateLabel.text = dateFormatter.string(from: missionary.mtcDate ?? Date())
+        if let mtcDate = missionary.mtcDate {
+        enterMtcDateLabel.text = dateFormatter.string(from: mtcDate)
+        } else {
+            enterMtcDateLabel.text = ""
+        }
         whichMtcLabel.text = missionary.mtc
         suitLabel.text = missionary.suit
         suitBrandLabel.text = missionary.suitBrand

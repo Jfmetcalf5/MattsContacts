@@ -102,8 +102,8 @@ class EveryoneDetailViewController: UIViewController, MFMessageComposeViewContro
     func setUpViews() {
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.dateFormat = "mm/dd/yyyy"
+        dateFormatter.dateStyle = .short
+        dateFormatter.dateFormat = "dd/mm/yy"
         
         guard let person = person else { return }
         if let name = person.name, let lastName = person.lastName {
@@ -113,7 +113,11 @@ class EveryoneDetailViewController: UIViewController, MFMessageComposeViewContro
                 nameLabel.text = "\(name) \(lastName)"
             }
         }
-        birthdayLabel.text = dateFormatter.string(from: person.birthday ?? Date())
+        if let birthday = person.birthday {
+        birthdayLabel.text = dateFormatter.string(from: birthday)
+        } else {
+            birthdayLabel.text = ""
+        }
         addressLabel.text = person.address
         cityLabel.text = person.city
         stateLabel.text = person.state

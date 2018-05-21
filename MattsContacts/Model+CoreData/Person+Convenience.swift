@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 extension Person {
-    convenience init(name: String, lastName: String, address: String, city: String, state: String, zip: String, phone: String, email: String, notes: String, suit: String, suitBrand: String, pantWaist: String, pantLength: String, bottom: String, front: String, shoes: String, shoeBrand: String, shoes2: String, shoes2Brand: String, lsShirtNeck: String, lsBrand: String, ssShirtsNeck: String, ssBrand: String, coat: String, coatBrand: String, birthday: Date, sleeve: String, context: NSManagedObjectContext = CoreDataStack.context) {
+    convenience init(name: String, lastName: String, address: String, city: String, state: String, zip: String, phone: String, email: String, notes: String, suit: String, suitBrand: String, pantWaist: String, pantLength: String, bottom: String, front: String, shoes: String, shoeBrand: String, shoes2: String, shoes2Brand: String, lsShirtNeck: String, lsBrand: String, ssShirtsNeck: String, ssBrand: String, coat: String, coatBrand: String, birthday: Date?, sleeve: String, context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
         self.name = name
         self.lastName = lastName

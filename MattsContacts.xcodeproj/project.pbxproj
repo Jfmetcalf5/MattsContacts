@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B0AE6F620B33C3800D62A9E /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0AE6F520B33C3800D62A9E /* DateHelper.swift */; };
 		3B0B321020A0F9BD0033066F /* AddEditMissionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B320F20A0F9BD0033066F /* AddEditMissionaryViewController.swift */; };
 		3B0B321320A34CEE0033066F /* ShiftableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B321220A34CEE0033066F /* ShiftableViewController.swift */; };
 		3B3AE99220A9C881002E8D12 /* EveryoneListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3AE99120A9C881002E8D12 /* EveryoneListTableViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B0AE6F520B33C3800D62A9E /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		3B0B320F20A0F9BD0033066F /* AddEditMissionaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditMissionaryViewController.swift; sourceTree = "<group>"; };
 		3B0B321220A34CEE0033066F /* ShiftableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftableViewController.swift; sourceTree = "<group>"; };
 		3B3AE99120A9C881002E8D12 /* EveryoneListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EveryoneListTableViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				3B0B321220A34CEE0033066F /* ShiftableViewController.swift */,
+				3B0AE6F520B33C3800D62A9E /* DateHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B0AE6F620B33C3800D62A9E /* DateHelper.swift in Sources */,
 				3B9D119720A0B5C100B44CF7 /* MissionaryController.swift in Sources */,
 				3B9D119320A0B36600B44CF7 /* CoreDataStack.swift in Sources */,
 				3B9D119520A0B39500B44CF7 /* Missionary+Convenience.swift in Sources */,
