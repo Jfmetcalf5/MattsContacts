@@ -81,13 +81,13 @@ class AddEditEveryoneViewController: ShiftableViewController {
         coatTextField.delegate = self
         coatBrandTextField.delegate = self
         
-        birthdayTextField.placeholder = "mm/dd/yyyy"
+        birthdayTextField.placeholder = "mm/dd/yy"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/mm/yy"
+        dateFormatter.dateFormat = "mm/dd/yy"
         guard let person = person else { return }
         let notes = person.notes?.components(separatedBy: "\n")
         let note1 = notes?.first
@@ -102,6 +102,7 @@ class AddEditEveryoneViewController: ShiftableViewController {
         }
         if let birthday = person.birthday {
             birthdayTextField.text = dateFormatter.string(from: birthday)
+            pickerView.setDate(birthday, animated: true)
         } else {
             birthdayTextField.text = ""
         }
@@ -145,7 +146,7 @@ class AddEditEveryoneViewController: ShiftableViewController {
 //
 //    @objc func donePressed() {
 //        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "dd/mm/yy"
+//        dateFormatter.dateFormat = "mm/dd/yy"
 //        dateFormatter.dateStyle = .short
 //
 //        if birthdayTextField.isEditing {
@@ -156,7 +157,7 @@ class AddEditEveryoneViewController: ShiftableViewController {
     
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/mm/yy"
+        dateFormatter.dateFormat = "mm/dd/yy"
         guard let wholeName = nameTextField.text, wholeName != "" else { return }
         let firstAndLast = wholeName.components(separatedBy: " ")
         let name = firstAndLast.first ?? ""
@@ -203,7 +204,7 @@ class AddEditEveryoneViewController: ShiftableViewController {
     
     @objc func dateChanged(datePicker: UIDatePicker) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/mm/yy"
+        dateFormatter.dateFormat = "mm/dd/yy"
         dateFormatter.dateStyle = .short
         if birthdayTextField.isEditing {
             birthdayTextField.text = dateFormatter.string(from: pickerView.date)

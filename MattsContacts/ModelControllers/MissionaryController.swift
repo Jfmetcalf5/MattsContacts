@@ -66,7 +66,10 @@ class MissionaryController {
     
     func fetchMissionariesWith(searchTerm: String) {
         fetchMissionaries()
-        let searchedMissionaries = MissionaryController.shared.missionaries.filter{"\($0.name?.lowercased() ?? "") \($0.lastName?.lowercased() ?? "")".contains(searchTerm.lowercased()) || ("\($0.birthday?.month ?? 0)".contains(searchTerm.lowercased()))}
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.dateFormat = "mm/dd/yy"
+        let searchedMissionaries = MissionaryController.shared.missionaries.filter{"\($0.name?.lowercased() ?? "") \($0.lastName?.lowercased() ?? "")".contains(searchTerm.lowercased()) || ("\(dateFormatter.string(from: $0.birthday ?? Date()).dropLast().dropLast().dropLast().dropLast().dropLast().dropLast())".contains(searchTerm.lowercased()))}
         self.missionaries = searchedMissionaries
     }
     

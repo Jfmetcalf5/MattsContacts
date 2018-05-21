@@ -103,7 +103,7 @@ class EveryoneDetailViewController: UIViewController, MFMessageComposeViewContro
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
-        dateFormatter.dateFormat = "dd/mm/yy"
+        dateFormatter.dateFormat = "mm/dd/yy"
         
         guard let person = person else { return }
         if let name = person.name, let lastName = person.lastName {
