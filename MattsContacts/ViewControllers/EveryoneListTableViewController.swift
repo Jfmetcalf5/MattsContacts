@@ -94,7 +94,9 @@ class EveryoneListTableViewController: UITableViewController, UISearchBarDelegat
         if editingStyle == .delete {
             let selectedPerson = PersonController.shared.persons[indexPath.row]
             PersonController.shared.delete(person: selectedPerson)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            try? CoreDataStack.context.save()
+            tabBarController?.selectedIndex = 0
+            tabBarController?.selectedIndex = 1
         }
     }
     

@@ -15,6 +15,7 @@ class AddEditEveryoneViewController: ShiftableViewController {
     @IBOutlet var pickerView: UIDatePicker!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var birthdayTextField: UITextField!
+    @IBOutlet weak var lastVisitTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var stateTextField: UITextField!
@@ -46,13 +47,14 @@ class AddEditEveryoneViewController: ShiftableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        createToolBar()
-//
+
         pickerView.addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
         
         nameTextField.delegate = self
         birthdayTextField.delegate = self
         birthdayTextField.inputView = pickerView
+        lastVisitTextField.delegate = self
+        lastVisitTextField.inputView = pickerView
         addressTextField.delegate = self
         cityTextField.delegate = self
         stateTextField.delegate = self
@@ -82,6 +84,7 @@ class AddEditEveryoneViewController: ShiftableViewController {
         coatBrandTextField.delegate = self
         
         birthdayTextField.placeholder = "mm/dd/yy"
+        lastVisitTextField.placeholder = "mm/dd/yy"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -105,6 +108,12 @@ class AddEditEveryoneViewController: ShiftableViewController {
             pickerView.setDate(birthday, animated: true)
         } else {
             birthdayTextField.text = ""
+        }
+        if let lastVisitDate = person.lastVisit {
+            lastVisitTextField.text = dateFormatter.string(from: lastVisitDate)
+            pickerView.setDate(lastVisitDate, animated: true)
+        } else {
+            lastVisitTextField.text = ""
         }
         addressTextField.text = person.address
         cityTextField.text = person.city
@@ -134,27 +143,6 @@ class AddEditEveryoneViewController: ShiftableViewController {
         coatBrandTextField.text = person.coatBrand
     }
     
-//    func createToolBar() {
-//        let toolBar = UIToolbar()
-//        toolBar.sizeToFit()
-//
-//        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
-//
-//        toolBar.setItems([doneButton], animated: true)
-//        birthdayTextField.inputAccessoryView = toolBar
-//    }
-//
-//    @objc func donePressed() {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "mm/dd/yy"
-//        dateFormatter.dateStyle = .short
-//
-//        if birthdayTextField.isEditing {
-//            birthdayTextField.text = dateFormatter.string(from: pickerView.date)
-//        }
-//        view.endEditing(true)
-//    }
-    
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "mm/dd/yy"
@@ -167,6 +155,8 @@ class AddEditEveryoneViewController: ShiftableViewController {
         let note3 = note3TextField.text ?? ""
         let birthdayString = birthdayTextField.text
         let birthday = dateFormatter.date(from: birthdayString ?? "")
+        let lastVisitString = lastVisitTextField.text
+        let lastVisit = dateFormatter.date(from: lastVisitString ?? "")
         let address = addressTextField.text
         let city = cityTextField.text
         let state = stateTextField.text
@@ -193,9 +183,9 @@ class AddEditEveryoneViewController: ShiftableViewController {
         let coatBrand = coatBrandTextField.text
         
         if let person = person {
-            PersonController.shared.update(person: person, name: name, lastName: lastName, address: address ?? "", city: city ?? "", state: state ?? "", zip: zip ?? "", phone: phone ?? "", email: email ?? "", notes: notes, suit: suit ?? "", suitBrand: suitBrand ?? "", pantWaist: pantWaist ?? "", pantLength: pantLength ?? "", bottom: bottom ?? "", front: front ?? "", shoes: shoes ?? "", shoeBrand: shoeBrand ?? "", shoes2: shoes2 ?? "", shoes2Brand: shoes2Brand ?? "", lsShirtsNeck: lsShirtsNeck ?? "", lsBrand: lsBrand ?? "", ssShirtsNeck: ssShirtsNeck ?? "", ssBrand: ssBrand ?? "", coat: coat ?? "", coatBrand: coatBrand ?? "", birthday: birthday ?? nil, sleeve: sleeve ?? "")
+            PersonController.shared.update(person: person, name: name, lastName: lastName, lastVisit: lastVisit ?? nil, address: address ?? "", city: city ?? "", state: state ?? "", zip: zip ?? "", phone: phone ?? "", email: email ?? "", notes: notes, suit: suit ?? "", suitBrand: suitBrand ?? "", pantWaist: pantWaist ?? "", pantLength: pantLength ?? "", bottom: bottom ?? "", front: front ?? "", shoes: shoes ?? "", shoeBrand: shoeBrand ?? "", shoes2: shoes2 ?? "", shoes2Brand: shoes2Brand ?? "", lsShirtsNeck: lsShirtsNeck ?? "", lsBrand: lsBrand ?? "", ssShirtsNeck: ssShirtsNeck ?? "", ssBrand: ssBrand ?? "", coat: coat ?? "", coatBrand: coatBrand ?? "", birthday: birthday ?? nil, sleeve: sleeve ?? "")
         } else {
-            PersonController.shared.createPerson(name: name, lastName: lastName, address: address ?? "", city: city ?? "", state: state ?? "", zip: zip ?? "", phone: phone ?? "", email: email ?? "", notes: notes, suit: suit ?? "", suitBrand: suitBrand ?? "", pantWaist: pantWaist ?? "", pantLength: pantLength ?? "", bottom: bottom ?? "", front: front ?? "", shoes: shoes ?? "", shoeBrand: shoeBrand ?? "", shoes2: shoes2 ?? "", shoes2Brand: shoes2Brand ?? "", lsShirtsNeck: lsShirtsNeck ?? "", lsBrand: lsBrand ?? "", ssShirtsNeck: ssShirtsNeck ?? "", ssBrand: ssBrand ?? "", coat: coat ?? "", coatBrand: coatBrand ?? "", birthday: birthday ?? nil, sleeve: sleeve ?? "")
+            PersonController.shared.createPerson(name: name, lastName: lastName, lastVisit: lastVisit ?? nil, address: address ?? "", city: city ?? "", state: state ?? "", zip: zip ?? "", phone: phone ?? "", email: email ?? "", notes: notes, suit: suit ?? "", suitBrand: suitBrand ?? "", pantWaist: pantWaist ?? "", pantLength: pantLength ?? "", bottom: bottom ?? "", front: front ?? "", shoes: shoes ?? "", shoeBrand: shoeBrand ?? "", shoes2: shoes2 ?? "", shoes2Brand: shoes2Brand ?? "", lsShirtsNeck: lsShirtsNeck ?? "", lsBrand: lsBrand ?? "", ssShirtsNeck: ssShirtsNeck ?? "", ssBrand: ssBrand ?? "", coat: coat ?? "", coatBrand: coatBrand ?? "", birthday: birthday ?? nil, sleeve: sleeve ?? "")
         }
         navigationController?.popViewController(animated: true)
     }
@@ -208,6 +198,9 @@ class AddEditEveryoneViewController: ShiftableViewController {
         dateFormatter.dateStyle = .short
         if birthdayTextField.isEditing {
             birthdayTextField.text = dateFormatter.string(from: pickerView.date)
+        }
+        if lastVisitTextField.isEditing {
+            lastVisitTextField.text = dateFormatter.string(from: pickerView.date)
         }
     }
 }

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Missionary" representedClassName="Missionary" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="birthday" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="bottom" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coat" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coatBrand" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="front" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastVisit" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="lsBrand" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lsShirtsNeck" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mission" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mtc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mtcDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pant" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pantBrand" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pantLength" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pantWaist" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="parents" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="parentsEmail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shoeBrand" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shoes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shoes2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shoes2Brand" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sleeve" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ssBrand" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ssShirtsNeck" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="suit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="suitBrand" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Person" representedClassName="Person" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="birthday" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="bottom" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coat" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coatBrand" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="front" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastVisit" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="lsBrand" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lsShirtsNeck" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pantBrand" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pantLength" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pantWaist" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shoeBrand" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shoes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shoes2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shoes2Brand" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sleeve" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ssBrand" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ssShirtsNeck" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="suit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="suitBrand" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Missionary" positionX="-63" positionY="-18" width="128" height="555"/>
+        <element name="Person" positionX="-63" positionY="135" width="128" height="480"/>
+    </elements>
+</model>

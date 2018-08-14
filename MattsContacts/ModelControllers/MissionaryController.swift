@@ -22,15 +22,16 @@ class MissionaryController {
         self.missionaries = sortedMissionaries
     }
     
-    func createMissioanry(name: String, lastName: String, parents: String, address: String, city: String, state: String, zip: String, phone: String, parentsEmail: String, mission: String, mtcDate: Date?, mtc: String, notes: String, suit: String, suitBrand: String, pantWaist: String, pantLength: String, bottom: String, front: String, shoes: String, shoeBrand: String, shoes2: String, shoes2Brand: String, lsShirtsNeck: String, lsBrand: String, ssShirtsNeck: String, ssBrand: String, coat: String, coatBrand: String, birthday: Date?, pant: String, sleeve: String) {
+    func createMissioanry(name: String, lastName: String, lastVisit: Date?, parents: String, address: String, city: String, state: String, zip: String, phone: String, parentsEmail: String, mission: String, mtcDate: Date?, mtc: String, notes: String, suit: String, suitBrand: String, pantWaist: String, pantLength: String, bottom: String, front: String, shoes: String, shoeBrand: String, shoes2: String, shoes2Brand: String, lsShirtsNeck: String, lsBrand: String, ssShirtsNeck: String, ssBrand: String, coat: String, coatBrand: String, birthday: Date?, pant: String, sleeve: String) {
         
-        let _ = Missionary(name: name, lastName: lastName, parents: parents, address: address, city: city, state: state, zip: zip, phone: phone, parentsEmail: parentsEmail, mission: mission, mtcDate: mtcDate, mtc: mtc, notes: notes, suit: suit, suitBrand: suitBrand, pantWaist: pantWaist, pantLength: pantLength, bottom: bottom, front: front, shoes: shoes, shoeBrand: shoeBrand, shoes2: shoes2, shoes2Brand: shoes2Brand, lsShirtsNeck: lsShirtsNeck, lsBrand: lsBrand, ssShirtsNeck: ssShirtsNeck, ssBrand: ssBrand, coat: coat, coatBrand: coatBrand, birthday: birthday, pant: pant, sleeve: sleeve)
+        let _ = Missionary(name: name, lastName: lastName, lastVisit: lastVisit, parents: parents, address: address, city: city, state: state, zip: zip, phone: phone, parentsEmail: parentsEmail, mission: mission, mtcDate: mtcDate, mtc: mtc, notes: notes, suit: suit, suitBrand: suitBrand, pantWaist: pantWaist, pantLength: pantLength, bottom: bottom, front: front, shoes: shoes, shoeBrand: shoeBrand, shoes2: shoes2, shoes2Brand: shoes2Brand, lsShirtsNeck: lsShirtsNeck, lsBrand: lsBrand, ssShirtsNeck: ssShirtsNeck, ssBrand: ssBrand, coat: coat, coatBrand: coatBrand, birthday: birthday, pant: pant, sleeve: sleeve)
         saveToPersistentStore()
     }
     
-    func update(missionary: Missionary, name: String, lastName: String, parents: String, address: String, city: String, state: String, zip: String, phone: String, parentsEmail: String, mission: String, mtcDate: Date?, mtc: String, notes: String, suit: String, suitBrand: String, pantWaist: String, pantLength: String, bottom: String, front: String, shoes: String, shoeBrand: String, shoes2: String, shoes2Brand: String, lsShirtsNeck: String, lsBrand: String, ssShirtsNeck: String, ssBrand: String, coat: String, coatBrand: String, birthday: Date?, pant: String, sleeve: String) {
+    func update(missionary: Missionary, name: String, lastName: String, lastVisit: Date?, parents: String, address: String, city: String, state: String, zip: String, phone: String, parentsEmail: String, mission: String, mtcDate: Date?, mtc: String, notes: String, suit: String, suitBrand: String, pantWaist: String, pantLength: String, bottom: String, front: String, shoes: String, shoeBrand: String, shoes2: String, shoes2Brand: String, lsShirtsNeck: String, lsBrand: String, ssShirtsNeck: String, ssBrand: String, coat: String, coatBrand: String, birthday: Date?, pant: String, sleeve: String) {
         missionary.name = name
         missionary.lastName = lastName
+        missionary.lastVisit = lastVisit
         missionary.parents = parents
         missionary.address = address
         missionary.city = city
@@ -69,7 +70,7 @@ class MissionaryController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateFormatter.dateFormat = "mm/dd/yy"
-        let searchedMissionaries = MissionaryController.shared.missionaries.filter{"\($0.name?.lowercased() ?? "") \($0.lastName?.lowercased() ?? "")".contains(searchTerm.lowercased()) || ("\(dateFormatter.string(from: $0.birthday ?? Date()).dropLast().dropLast().dropLast().dropLast().dropLast().dropLast())".contains(searchTerm.lowercased()))}
+        let searchedMissionaries = MissionaryController.shared.missionaries.filter{"\($0.name?.lowercased() ?? "") \($0.lastName?.lowercased() ?? "")".contains(searchTerm.lowercased()) || ("\(dateFormatter.string(from: $0.birthday ?? Date()))".contains(searchTerm.lowercased())) || ("\(dateFormatter.string(from: $0.lastVisit ?? Date()))".contains(searchTerm.lowercased()))}
         self.missionaries = searchedMissionaries
     }
     

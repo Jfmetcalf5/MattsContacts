@@ -15,6 +15,7 @@ class EveryoneDetailViewController: UIViewController, MFMessageComposeViewContro
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var birthdayLabel: UILabel!
+    @IBOutlet weak var lastVisitLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var stateLabel: UILabel!
@@ -40,10 +41,6 @@ class EveryoneDetailViewController: UIViewController, MFMessageComposeViewContro
     @IBOutlet weak var ssBrandLabel: UILabel!
     @IBOutlet weak var coatLabel: UILabel!
     @IBOutlet weak var coatBrandLabel: UILabel!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -117,6 +114,11 @@ class EveryoneDetailViewController: UIViewController, MFMessageComposeViewContro
         birthdayLabel.text = dateFormatter.string(from: birthday)
         } else {
             birthdayLabel.text = ""
+        }
+        if let lastVisitDate = person.lastVisit {
+            lastVisitLabel.text = dateFormatter.string(from: lastVisitDate)
+        } else {
+            lastVisitLabel.text = ""
         }
         addressLabel.text = person.address
         cityLabel.text = person.city

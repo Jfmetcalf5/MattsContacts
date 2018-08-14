@@ -93,7 +93,8 @@ class MissionaryListTableViewController: UITableViewController, UISearchBarDeleg
         if editingStyle == .delete {
             let selectedMissionary = MissionaryController.shared.missionaries[indexPath.row]
             MissionaryController.shared.delete(missionary: selectedMissionary)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            tabBarController?.selectedIndex = 1
+            tabBarController?.selectedIndex = 0
         }
     }
     

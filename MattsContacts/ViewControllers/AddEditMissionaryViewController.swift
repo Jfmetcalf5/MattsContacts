@@ -12,6 +12,7 @@ class AddEditMissionaryViewController: ShiftableViewController, UIPickerViewDele
     
     @IBOutlet var pickerView: UIDatePicker!
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var lastVisitTextField: UITextField!
     @IBOutlet weak var birthdayTextField: UITextField!
     @IBOutlet weak var parentsTextField: UITextField!
     @IBOutlet weak var addreddTextField: UITextField!
@@ -50,13 +51,14 @@ class AddEditMissionaryViewController: ShiftableViewController, UIPickerViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        createToolBar()
-//
+        
         pickerView.addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
         
         nameTextField.delegate = self
         birthdayTextField.delegate = self
         birthdayTextField.inputView = pickerView
+        lastVisitTextField.delegate = self
+        lastVisitTextField.inputView = pickerView
         parentsTextField.delegate = self
         addreddTextField.delegate = self
         cityTextField.delegate = self
@@ -92,6 +94,7 @@ class AddEditMissionaryViewController: ShiftableViewController, UIPickerViewDele
         coatBrandTextField.delegate = self
         
         birthdayTextField.placeholder = "mm/dd/yy"
+        lastVisitTextField.placeholder = "mm/dd/yy"
         enterMTCDateTextField.placeholder = "mm/dd/yy"
     }
     
@@ -117,6 +120,11 @@ class AddEditMissionaryViewController: ShiftableViewController, UIPickerViewDele
             pickerView.setDate(birthday, animated: true)
         } else {
             birthdayTextField.text = ""
+        }
+        if let lastVisitDate = missionary.lastVisit {
+            lastVisitTextField.text = dateFormatter.string(from: lastVisitDate)
+        } else {
+            lastVisitTextField.text = ""
         }
         parentsTextField.text = missionary.parents
         addreddTextField.text = missionary.address
@@ -162,6 +170,8 @@ class AddEditMissionaryViewController: ShiftableViewController, UIPickerViewDele
         let firstAndLast = wholeName.components(separatedBy: " ")
         let name = firstAndLast.first ?? ""
         let lastName = firstAndLast.last ?? ""
+        let lastVisitString = lastVisitTextField.text
+        let lastVisit = dateFormatter.date(from: lastVisitString ?? "")
         let note1 = note1TextField.text ?? ""
         let note2 = note2TextField.text ?? ""
         let note3 = note3TextField.text ?? ""
@@ -199,9 +209,9 @@ class AddEditMissionaryViewController: ShiftableViewController, UIPickerViewDele
         let coatBrand = coatBrandTextField.text
         
         if let missionary = missionary {
-            MissionaryController.shared.update(missionary: missionary, name: name, lastName: lastName, parents: parents ?? "", address: address ?? "", city: city ?? "", state: state ?? "", zip: zip ?? "", phone: phone ?? "", parentsEmail: parentsEmail ?? "", mission: mission ?? "", mtcDate: mtcDate ?? nil, mtc: mtc ?? "", notes: notes, suit: suit ?? "", suitBrand: suitBrand ?? "", pantWaist: pantWaist ?? "", pantLength: pantLength ?? "", bottom: bottom ?? "", front: front ?? "", shoes: shoes ?? "", shoeBrand: shoeBrand ?? "", shoes2: shoes2 ?? "", shoes2Brand: shoes2Brand ?? "", lsShirtsNeck: lsShirtsNeck ?? "", lsBrand: lsBrand ?? "", ssShirtsNeck: ssShirtsNeck ?? "", ssBrand: ssBrand ?? "", coat: coat ?? "", coatBrand: coatBrand ?? "", birthday: birthday ?? nil, pant: pant ?? "", sleeve: sleeve ?? "")
+            MissionaryController.shared.update(missionary: missionary, name: name, lastName: lastName, lastVisit: lastVisit ?? nil, parents: parents ?? "", address: address ?? "", city: city ?? "", state: state ?? "", zip: zip ?? "", phone: phone ?? "", parentsEmail: parentsEmail ?? "", mission: mission ?? "", mtcDate: mtcDate ?? nil, mtc: mtc ?? "", notes: notes, suit: suit ?? "", suitBrand: suitBrand ?? "", pantWaist: pantWaist ?? "", pantLength: pantLength ?? "", bottom: bottom ?? "", front: front ?? "", shoes: shoes ?? "", shoeBrand: shoeBrand ?? "", shoes2: shoes2 ?? "", shoes2Brand: shoes2Brand ?? "", lsShirtsNeck: lsShirtsNeck ?? "", lsBrand: lsBrand ?? "", ssShirtsNeck: ssShirtsNeck ?? "", ssBrand: ssBrand ?? "", coat: coat ?? "", coatBrand: coatBrand ?? "", birthday: birthday ?? nil, pant: pant ?? "", sleeve: sleeve ?? "")
         } else {
-            MissionaryController.shared.createMissioanry(name: name, lastName: lastName, parents: parents ?? "", address: address ?? "", city: city ?? "", state: state ?? "", zip: zip ?? "", phone: phone ?? "", parentsEmail: parentsEmail ?? "", mission: mission ?? "", mtcDate: mtcDate ?? nil, mtc: mtc ?? "", notes: notes, suit: suit ?? "", suitBrand: suitBrand ?? "", pantWaist: pantWaist ?? "", pantLength: pantLength ?? "", bottom: bottom ?? "", front: front ?? "", shoes: shoes ?? "", shoeBrand: shoeBrand ?? "", shoes2: shoes2 ?? "", shoes2Brand: shoes2Brand ?? "", lsShirtsNeck: lsShirtsNeck ?? "", lsBrand: lsBrand ?? "", ssShirtsNeck: ssShirtsNeck ?? "", ssBrand: ssBrand ?? "", coat: coat ?? "", coatBrand: coatBrand ?? "", birthday: birthday ?? nil, pant: pant ?? "", sleeve: sleeve ?? "")
+            MissionaryController.shared.createMissioanry(name: name, lastName: lastName, lastVisit: lastVisit ?? nil, parents: parents ?? "", address: address ?? "", city: city ?? "", state: state ?? "", zip: zip ?? "", phone: phone ?? "", parentsEmail: parentsEmail ?? "", mission: mission ?? "", mtcDate: mtcDate ?? nil, mtc: mtc ?? "", notes: notes, suit: suit ?? "", suitBrand: suitBrand ?? "", pantWaist: pantWaist ?? "", pantLength: pantLength ?? "", bottom: bottom ?? "", front: front ?? "", shoes: shoes ?? "", shoeBrand: shoeBrand ?? "", shoes2: shoes2 ?? "", shoes2Brand: shoes2Brand ?? "", lsShirtsNeck: lsShirtsNeck ?? "", lsBrand: lsBrand ?? "", ssShirtsNeck: ssShirtsNeck ?? "", ssBrand: ssBrand ?? "", coat: coat ?? "", coatBrand: coatBrand ?? "", birthday: birthday ?? nil, pant: pant ?? "", sleeve: sleeve ?? "")
         }
         navigationController?.popViewController(animated: true)
     }
@@ -218,6 +228,9 @@ class AddEditMissionaryViewController: ShiftableViewController, UIPickerViewDele
         }
         if enterMTCDateTextField.isEditing {
             enterMTCDateTextField.text = dateFormatter.string(from: pickerView.date)
+        }
+        if lastVisitTextField.isEditing {
+            lastVisitTextField.text = dateFormatter.string(from: pickerView.date)
         }
     }
 }

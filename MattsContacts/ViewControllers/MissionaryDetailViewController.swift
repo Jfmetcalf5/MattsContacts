@@ -15,6 +15,7 @@ class MissionaryDetailViewController: UIViewController, MFMessageComposeViewCont
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var birthdayLabel: UILabel!
+    @IBOutlet weak var lastVisitLabel: UILabel!
     @IBOutlet weak var parentsLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
@@ -46,17 +47,9 @@ class MissionaryDetailViewController: UIViewController, MFMessageComposeViewCont
     @IBOutlet weak var coatLabel: UILabel!
     @IBOutlet weak var coatBrandLabel: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUpViews()
-    }
-    
-    @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
-        print("I need to finish this!!!")
     }
     
     @IBAction func phoneButtonTapped(_ sender: UIButton) {
@@ -125,6 +118,11 @@ class MissionaryDetailViewController: UIViewController, MFMessageComposeViewCont
         birthdayLabel.text = dateFormatter.string(from: birthday)
         } else {
             birthdayLabel.text = ""
+        }
+        if let lastVisitDate = missionary.lastVisit {
+            lastVisitLabel.text = dateFormatter.string(from: lastVisitDate)
+        } else {
+            lastVisitLabel.text = ""
         }
         parentsLabel.text = missionary.parents
         addressLabel.text = missionary.address
