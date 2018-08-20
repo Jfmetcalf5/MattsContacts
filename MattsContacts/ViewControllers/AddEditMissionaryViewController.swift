@@ -118,7 +118,7 @@ class AddEditMissionaryViewController: ShiftableViewController {
         guard let first = missionary.name else { return }
         
         if let last = missionary.lastName {
-            nameTextField.text = "\(last) \(first)"
+            nameTextField.text = "\(first) \(last)"
         } else {
             nameTextField.text = "\(first)"
         }

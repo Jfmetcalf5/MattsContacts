@@ -57,6 +57,7 @@ class PersonController {
         person.coatBrand = coatBrand
         person.birthday = birthday
         person.sleeve = sleeve
+        saveToPersistentStore()
     }
     
     func fetchPersonsWith(searchTerm: String) {

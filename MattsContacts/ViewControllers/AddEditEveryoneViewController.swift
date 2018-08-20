@@ -105,7 +105,7 @@ class AddEditEveryoneViewController: ShiftableViewController {
         guard let first = person.name else { return }
         
         if let last = person.lastName {
-            nameTextField.text = "\(last) \(first)"
+            nameTextField.text = "\(first) \(last)"
         } else {
             nameTextField.text = "\(first)"
         }
