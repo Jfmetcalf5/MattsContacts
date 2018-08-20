@@ -77,12 +77,13 @@ class MissionaryListTableViewController: UITableViewController, UISearchBarDeleg
         let cell = tableView.dequeueReusableCell(withIdentifier: "missionaryCell", for: indexPath)
         
         let missionary = MissionaryController.shared.missionaries[indexPath.row]
-        if let first = missionary.name, let last = missionary.lastName {
-            if first == last {
-                cell.textLabel?.text = first
-            } else {
-                cell.textLabel?.text = "\(last) \(first)"
-            }
+        
+        guard let first = missionary.name else { return cell }
+        
+        if let last = missionary.lastName {
+            cell.textLabel?.text = "\(last) \(first)"
+        } else {
+            cell.textLabel?.text = "\(first)"
         }
         
         return cell

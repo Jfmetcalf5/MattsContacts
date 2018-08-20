@@ -12,6 +12,7 @@ class AddEditEveryoneViewController: ShiftableViewController {
     
     var person: Person?
     
+    @IBOutlet var toolBar: UIToolbar!
     @IBOutlet var pickerView: UIDatePicker!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var birthdayTextField: UITextField!
@@ -52,9 +53,14 @@ class AddEditEveryoneViewController: ShiftableViewController {
         
         nameTextField.delegate = self
         birthdayTextField.delegate = self
+        pickerView.translatesAutoresizingMaskIntoConstraints = false
+        pickerView.heightAnchor.constraint(equalTo: birthdayTextField.heightAnchor, multiplier: 4)
         birthdayTextField.inputView = pickerView
+        birthdayTextField.inputAccessoryView = toolBar
         lastVisitTextField.delegate = self
+        pickerView.heightAnchor.constraint(equalTo: lastVisitTextField.heightAnchor, multiplier: 4)
         lastVisitTextField.inputView = pickerView
+        lastVisitTextField.inputAccessoryView = toolBar
         addressTextField.delegate = self
         cityTextField.delegate = self
         stateTextField.delegate = self
@@ -96,12 +102,12 @@ class AddEditEveryoneViewController: ShiftableViewController {
         let note1 = notes?.first
         let note3 = notes?.last
         let note2 = notes?[1]
-        if let name = person.name, let lastName = person.lastName {
-            if name == lastName {
-                nameTextField.text = name
-            } else {
-                nameTextField.text = "\(name) \(lastName)"
-            }
+        guard let first = person.name else { return }
+        
+        if let last = person.lastName {
+            nameTextField.text = "\(last) \(first)"
+        } else {
+            nameTextField.text = "\(first)"
         }
         if let birthday = person.birthday {
             birthdayTextField.text = dateFormatter.string(from: birthday)
@@ -188,6 +194,16 @@ class AddEditEveryoneViewController: ShiftableViewController {
             PersonController.shared.createPerson(name: name, lastName: lastName, lastVisit: lastVisit ?? nil, address: address ?? "", city: city ?? "", state: state ?? "", zip: zip ?? "", phone: phone ?? "", email: email ?? "", notes: notes, suit: suit ?? "", suitBrand: suitBrand ?? "", pantWaist: pantWaist ?? "", pantLength: pantLength ?? "", bottom: bottom ?? "", front: front ?? "", shoes: shoes ?? "", shoeBrand: shoeBrand ?? "", shoes2: shoes2 ?? "", shoes2Brand: shoes2Brand ?? "", lsShirtsNeck: lsShirtsNeck ?? "", lsBrand: lsBrand ?? "", ssShirtsNeck: ssShirtsNeck ?? "", ssBrand: ssBrand ?? "", coat: coat ?? "", coatBrand: coatBrand ?? "", birthday: birthday ?? nil, sleeve: sleeve ?? "")
         }
         navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - ToolBar Action
+    @IBAction func clearDate(_ sender: UIBarButtonItem) {
+        if birthdayTextField.isEditing {
+            birthdayTextField.text = ""
+        }
+        if lastVisitTextField.isEditing {
+            lastVisitTextField.text = ""
+        }
     }
     
     // MARK: - Picker View Stuffs

@@ -1944,6 +1944,7 @@
                         <outlet property="stateTextField" destination="f7Y-Do-0cW" id="1Zr-mB-YBz"/>
                         <outlet property="suitBrandTextField" destination="Gft-xp-LP3" id="xV6-81-Ofh"/>
                         <outlet property="suitTextField" destination="7Da-Kd-FJa" id="wjZ-rv-Nkf"/>
+                        <outlet property="toolBar" destination="qZ0-hb-is0" id="fv1-6J-J3A"/>
                         <outlet property="waistTextField" destination="4Ph-lD-VHT" id="6EH-hC-Cqd"/>
                         <outlet property="whichMTCTextField" destination="eKQ-Nc-9wb" id="tN4-tu-7ax"/>
                         <outlet property="zipTextField" destination="cFH-gT-p4r" id="W2I-tc-s1W"/>
@@ -1957,6 +1958,19 @@
                         <!--1975-01-01 19:30:34 +0000-->
                     </date>
                 </datePicker>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="qZ0-hb-is0">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <items>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="OWx-lo-EtT"/>
+                        <barButtonItem title="Clear" id="qt8-jK-5wZ">
+                            <connections>
+                                <action selector="clearDate:" destination="7ff-9p-iHu" id="eQs-7V-58s"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="32l-Mu-XQx"/>
+                    </items>
+                </toolbar>
             </objects>
             <point key="canvasLocation" x="1033" y="-352"/>
         </scene>
@@ -1968,7 +1982,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aef-nx-ano">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="aef-nx-ano">
                                 <rect key="frame" x="0.0" y="64" width="375" height="1187"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IoW-eO-fhw">
@@ -2520,10 +2534,24 @@
                         <outlet property="stateTextField" destination="Zfb-Xk-qnM" id="ngC-Ea-M2Z"/>
                         <outlet property="suitBrandTextField" destination="e4o-nn-zrv" id="nHf-pt-KhJ"/>
                         <outlet property="suitTextField" destination="o44-9K-bVV" id="5bJ-OK-iDs"/>
+                        <outlet property="toolBar" destination="jn8-q3-FgD" id="Tzb-IQ-w9E"/>
                         <outlet property="zipTextField" destination="9b1-P0-7Hu" id="0uj-YU-wdw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NLo-Wg-HFn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="jn8-q3-FgD">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <items>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Tpj-JQ-jbh"/>
+                        <barButtonItem title="Clear" id="p8U-Sz-amX">
+                            <connections>
+                                <action selector="clearDate:" destination="oac-FP-TGd" id="LE2-JW-LMO"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="PRK-0P-qhO"/>
+                    </items>
+                </toolbar>
                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" id="7QS-bA-Coe">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="162"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>

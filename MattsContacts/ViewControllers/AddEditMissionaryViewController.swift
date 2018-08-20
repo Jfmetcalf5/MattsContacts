@@ -8,8 +8,9 @@
 
 import UIKit
 
-class AddEditMissionaryViewController: ShiftableViewController, UIPickerViewDelegate {
+class AddEditMissionaryViewController: ShiftableViewController {
     
+    @IBOutlet var toolBar: UIToolbar!
     @IBOutlet var pickerView: UIDatePicker!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var lastVisitTextField: UITextField!
@@ -56,9 +57,14 @@ class AddEditMissionaryViewController: ShiftableViewController, UIPickerViewDele
         
         nameTextField.delegate = self
         birthdayTextField.delegate = self
+        pickerView.translatesAutoresizingMaskIntoConstraints = false
+        pickerView.heightAnchor.constraint(equalTo: birthdayTextField.heightAnchor, multiplier: 4)
         birthdayTextField.inputView = pickerView
+        birthdayTextField.inputAccessoryView = toolBar
         lastVisitTextField.delegate = self
+        pickerView.heightAnchor.constraint(equalTo: birthdayTextField.heightAnchor, multiplier: 4)
         lastVisitTextField.inputView = pickerView
+        lastVisitTextField.inputAccessoryView = toolBar
         parentsTextField.delegate = self
         addreddTextField.delegate = self
         cityTextField.delegate = self
@@ -69,6 +75,7 @@ class AddEditMissionaryViewController: ShiftableViewController, UIPickerViewDele
         missionTextField.delegate = self
         enterMTCDateTextField.delegate = self
         enterMTCDateTextField.inputView = pickerView
+        enterMTCDateTextField.inputAccessoryView = toolBar
         whichMTCTextField.delegate = self
         note1TextField.delegate = self
         note2TextField.delegate = self
@@ -108,12 +115,12 @@ class AddEditMissionaryViewController: ShiftableViewController, UIPickerViewDele
         let note1 = notes?.first
         let note3 = notes?.last
         let note2 = notes?[1]
-        if let name = missionary.name, let lastName = missionary.lastName {
-            if name == lastName {
-                nameTextField.text = name
-            } else {
-                nameTextField.text = "\(name) \(lastName)"
-            }
+        guard let first = missionary.name else { return }
+        
+        if let last = missionary.lastName {
+            nameTextField.text = "\(last) \(first)"
+        } else {
+            nameTextField.text = "\(first)"
         }
         if let birthday = missionary.birthday {
             birthdayTextField.text = dateFormatter.string(from: birthday)
@@ -216,6 +223,17 @@ class AddEditMissionaryViewController: ShiftableViewController, UIPickerViewDele
         navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func clearDate(_ sender: UIBarButtonItem) {
+        if birthdayTextField.isEditing {
+            birthdayTextField.text = ""
+        }
+        if enterMTCDateTextField.isEditing {
+            enterMTCDateTextField.text = ""
+        }
+        if lastVisitTextField.isEditing {
+            lastVisitTextField.text = ""
+        }
+    }
     
     // MARK: - Picker View Stuffs
     

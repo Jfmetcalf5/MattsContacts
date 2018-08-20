@@ -78,12 +78,12 @@ class EveryoneListTableViewController: UITableViewController, UISearchBarDelegat
         let cell = tableView.dequeueReusableCell(withIdentifier: "personCell", for: indexPath)
         
         let person = PersonController.shared.persons[indexPath.row]
-        if let first = person.name, let last = person.lastName {
-            if first == last {
-                cell.textLabel?.text = first
-            } else {
-                cell.textLabel?.text = "\(last) \(first)"
-            }
+        guard let first = person.name else { return cell }
+        
+        if let last = person.lastName {
+            cell.textLabel?.text = "\(last) \(first)"
+        } else {
+            cell.textLabel?.text = "\(first)"
         }
         
         return cell

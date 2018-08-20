@@ -138,8 +138,8 @@
 				3BB9BD3620A0BF0300DF36F5 /* MissionaryDetailViewController.swift */,
 				3B0B320F20A0F9BD0033066F /* AddEditMissionaryViewController.swift */,
 				3B3AE99120A9C881002E8D12 /* EveryoneListTableViewController.swift */,
-				3B3AE99920A9CCB2002E8D12 /* AddEditEveryoneViewController.swift */,
 				3B3AE99B20A9CCC1002E8D12 /* EveryoneDetailViewController.swift */,
+				3B3AE99920A9CCB2002E8D12 /* AddEditEveryoneViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

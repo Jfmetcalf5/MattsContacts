@@ -24,14 +24,14 @@ class MissionaryController {
     
     func createMissioanry(name: String, lastName: String, lastVisit: Date?, parents: String, address: String, city: String, state: String, zip: String, phone: String, parentsEmail: String, mission: String, mtcDate: Date?, mtc: String, notes: String, suit: String, suitBrand: String, pantWaist: String, pantLength: String, bottom: String, front: String, shoes: String, shoeBrand: String, shoes2: String, shoes2Brand: String, lsShirtsNeck: String, lsBrand: String, ssShirtsNeck: String, ssBrand: String, coat: String, coatBrand: String, birthday: Date?, pant: String, sleeve: String) {
         
-        let _ = Missionary(name: name, lastName: lastName, lastVisit: lastVisit, parents: parents, address: address, city: city, state: state, zip: zip, phone: phone, parentsEmail: parentsEmail, mission: mission, mtcDate: mtcDate, mtc: mtc, notes: notes, suit: suit, suitBrand: suitBrand, pantWaist: pantWaist, pantLength: pantLength, bottom: bottom, front: front, shoes: shoes, shoeBrand: shoeBrand, shoes2: shoes2, shoes2Brand: shoes2Brand, lsShirtsNeck: lsShirtsNeck, lsBrand: lsBrand, ssShirtsNeck: ssShirtsNeck, ssBrand: ssBrand, coat: coat, coatBrand: coatBrand, birthday: birthday, pant: pant, sleeve: sleeve)
+        let _ = Missionary(name: name, lastName: lastName, lastVisit: lastVisit ?? nil, parents: parents, address: address, city: city, state: state, zip: zip, phone: phone, parentsEmail: parentsEmail, mission: mission, mtcDate: mtcDate, mtc: mtc, notes: notes, suit: suit, suitBrand: suitBrand, pantWaist: pantWaist, pantLength: pantLength, bottom: bottom, front: front, shoes: shoes, shoeBrand: shoeBrand, shoes2: shoes2, shoes2Brand: shoes2Brand, lsShirtsNeck: lsShirtsNeck, lsBrand: lsBrand, ssShirtsNeck: ssShirtsNeck, ssBrand: ssBrand, coat: coat, coatBrand: coatBrand, birthday: birthday, pant: pant, sleeve: sleeve)
         saveToPersistentStore()
     }
     
     func update(missionary: Missionary, name: String, lastName: String, lastVisit: Date?, parents: String, address: String, city: String, state: String, zip: String, phone: String, parentsEmail: String, mission: String, mtcDate: Date?, mtc: String, notes: String, suit: String, suitBrand: String, pantWaist: String, pantLength: String, bottom: String, front: String, shoes: String, shoeBrand: String, shoes2: String, shoes2Brand: String, lsShirtsNeck: String, lsBrand: String, ssShirtsNeck: String, ssBrand: String, coat: String, coatBrand: String, birthday: Date?, pant: String, sleeve: String) {
         missionary.name = name
         missionary.lastName = lastName
-        missionary.lastVisit = lastVisit
+        missionary.lastVisit = lastVisit ?? nil
         missionary.parents = parents
         missionary.address = address
         missionary.city = city
