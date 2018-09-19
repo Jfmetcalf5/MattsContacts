@@ -174,7 +174,10 @@ class AddEditMissionaryViewController: ShiftableViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "mm/dd/yy"
         guard let wholeName = nameTextField.text, wholeName != "" else { return }
-        let firstAndLast = wholeName.components(separatedBy: " ")
+        var firstAndLast = wholeName.components(separatedBy: " ")
+        if firstAndLast.last == "" {
+            firstAndLast.removeLast()
+        }
         let name = firstAndLast.first ?? ""
         let lastName = firstAndLast.last ?? ""
         let lastVisitString = lastVisitTextField.text

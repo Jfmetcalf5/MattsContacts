@@ -153,8 +153,11 @@ class AddEditEveryoneViewController: ShiftableViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "mm/dd/yy"
         guard let wholeName = nameTextField.text, wholeName != "" else { return }
-        let firstAndLast = wholeName.components(separatedBy: " ")
+        var firstAndLast = wholeName.components(separatedBy: " ")
         let name = firstAndLast.first ?? ""
+        if firstAndLast.last == "" {
+            firstAndLast.removeLast()
+        }
         let lastName = firstAndLast.last ?? ""
         let note1 = note1TextField.text ?? ""
         let note2 = note2TextField.text ?? ""
